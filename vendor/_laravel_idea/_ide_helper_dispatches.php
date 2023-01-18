@@ -1,0 +1,75 @@
+<?php //a11ea2b2d33bc1f41b39b13854b883e1
+/** @noinspection all */
+
+namespace App\Events {
+
+    use Illuminate\Broadcasting\PendingBroadcast;
+
+    /**
+     * @method static void dispatch($message)
+     * @method static PendingBroadcast broadcast($message)
+     */
+    class NewMessage {}
+}
+
+namespace Illuminate\Foundation\Console {
+
+    use Illuminate\Foundation\Bus\PendingDispatch;
+
+    /**
+     * @method static PendingDispatch dispatch(array $data)
+     * @method static void dispatchNow(array $data)
+     */
+    class QueuedCommand {}
+}
+
+namespace Illuminate\Queue {
+
+    use Illuminate\Foundation\Bus\PendingDispatch;
+    use Laravel\SerializableClosure\SerializableClosure;
+
+    /**
+     * @method static PendingDispatch dispatch(SerializableClosure $closure)
+     * @method static void dispatchNow(SerializableClosure $closure)
+     */
+    class CallQueuedClosure {}
+}
+
+namespace Maatwebsite\Excel\Jobs {
+
+    use Illuminate\Contracts\Queue\ShouldQueue;
+    use Illuminate\Foundation\Bus\PendingDispatch;
+    use Maatwebsite\Excel\Concerns\FromQuery;
+    use Maatwebsite\Excel\Concerns\FromView;
+    use Maatwebsite\Excel\Files\TemporaryFile;
+
+    /**
+     * @method static PendingDispatch dispatch(object $sheetExport, TemporaryFile $temporaryFile, string $writerType, int $sheetIndex, array $data)
+     * @method static void dispatchNow(object $sheetExport, TemporaryFile $temporaryFile, string $writerType, int $sheetIndex, array $data)
+     */
+    class AppendDataToSheet {}
+
+    /**
+     * @method static PendingDispatch dispatch(FromQuery $sheetExport, TemporaryFile $temporaryFile, string $writerType, int $sheetIndex, int $page, int $chunkSize)
+     * @method static void dispatchNow(FromQuery $sheetExport, TemporaryFile $temporaryFile, string $writerType, int $sheetIndex, int $page, int $chunkSize)
+     */
+    class AppendQueryToSheet {}
+
+    /**
+     * @method static PendingDispatch dispatch(FromView $sheetExport, TemporaryFile $temporaryFile, string $writerType, int $sheetIndex)
+     * @method static void dispatchNow(FromView $sheetExport, TemporaryFile $temporaryFile, string $writerType, int $sheetIndex)
+     */
+    class AppendViewToSheet {}
+
+    /**
+     * @method static PendingDispatch dispatch(object $export, TemporaryFile $temporaryFile, string $writerType)
+     * @method static void dispatchNow(object $export, TemporaryFile $temporaryFile, string $writerType)
+     */
+    class QueueExport {}
+
+    /**
+     * @method static PendingDispatch dispatch(ShouldQueue $import = null)
+     * @method static void dispatchNow(ShouldQueue $import = null)
+     */
+    class QueueImport {}
+}

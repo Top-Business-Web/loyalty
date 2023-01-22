@@ -24,6 +24,26 @@
                 </form>
             </div>
             <div class="d-flex mr-auto header-right-icons header-search-icon">
+                <div class="dropdown profile-1">
+                    @php
+                        $name  = loggedAdmin('name');
+                        $photo = get_user_file(loggedAdmin('image'));
+                    @endphp
+                    <a href="#" data-toggle="dropdown" class="nav-link pl-2 pr-2  leading-none d-flex">
+                        <div class="text-center mt-1 d-none d-xl-block">
+                            <h6 class="text-dark mb-0 fs-13 font-weight-semibold text-capitalize">{{__('admin.language')}}</h6>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
+                        <a class="dropdown-item" href="{{url('/change-language/ar')}}">
+                            <i class="dropdown-icon mdi mdi-account-outline"></i> {{__('admin.arabic')}}
+                        </a>
+                        <a class="dropdown-item" href="{{url('/change-language/en')}}">
+                            <i class="dropdown-icon  mdi mdi-settings"></i> {{__('admin.english')}}
+                        </a>
+
+                    </div>
+                </div>
                 <button class="navbar-toggler navresponsive-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class="navbar-toggler-icon">
                         <path d="M0 0h24v24H0V0z" fill="none" />
@@ -63,6 +83,7 @@
                         </a>
                     </div>
                 </div>
+
                 <!-- SIDE-MENU -->
             </div>
         </div>

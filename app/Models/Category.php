@@ -9,4 +9,11 @@ class Category extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    ##  Mutators and Accessors
+    public function getImageAttribute()
+    {
+        return get_file($this->attributes['image']);
+    }
+
 }

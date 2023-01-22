@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'Auth','prefix' => 'auth'],function (){
-//    Route::post('password/email',  ForgotPasswordController::class);
-//    Route::post('password/code/check', CodeCheckController::class);
-//    Route::post('password/reset', ResetPasswordController::class);
+Route::group(['namespace' => 'Api','prefix' => 'auth'],function (){
+    Route::post('password/email',  'Auth\ForgotPasswordController');
+    Route::post('password/code/check', 'Auth\CodeCheckController');
+    Route::post('password/reset', 'Auth\ResetPasswordController');
     Route::post('login',[AuthController::class, 'login']);
     Route::POST('register',[AuthController::class, 'register']);
     Route::POST('update-profile',[AuthController::class, 'update_profile']);

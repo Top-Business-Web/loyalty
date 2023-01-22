@@ -7,7 +7,9 @@
         <!-- LOGO -->
     </div>
     <ul class="side-menu">
-        <li><h3>العناصر</h3></li>
+        <li>
+            <h3>العناصر</h3>
+        </li>
         <li class="slide">
             <a class="side-menu__item" href="{{route('adminHome')}}">
                 <i class="icon icon-home side-menu__icon"></i>
@@ -19,6 +21,19 @@
                 <i class="fe fe-users side-menu__icon"></i>
                 <span class="side-menu__label">المشرفين</span>
             </a>
+        </li>
+
+        <li class="slide">
+            <a class="side-menu__item" data-toggle="slide" href="#">
+                <i class="fe fe-shopping-cart side-menu__icon"></i>
+                <span class="side-menu__label">{{__('admin.products')}}</span><i class="angle fa fa-angle-left"></i>
+            </a>
+            <ul class="slide-menu">
+
+                <li><a href="{{ route('categories.index') }}" class="slide-item">{{__('admin.categories')}}</a></li>
+                <li><a href="{{ route('products.index') }}" class="slide-item">{{__('admin.products')}}</a></li>
+
+            </ul>
         </li>
         <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#">

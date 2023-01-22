@@ -12,12 +12,12 @@
 <link href="{{asset('assets/admin')}}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
 <!-- STYLE CSS -->
-<link href="{{asset('assets/admin')}}/assets/css-rtl/style.css" rel="stylesheet"/>
-<link href="{{asset('assets/admin')}}/assets/css-rtl/skin-modes.css" rel="stylesheet"/>
-<link href="{{asset('assets/admin')}}/assets/css-rtl/dark-style.css" rel="stylesheet"/>
+<link href="{{asset('assets/admin')}}/assets/css{{(app()->getLocale() == 'ar')? "-rtl" :''}}/style.css" rel="stylesheet"/>
+<link href="{{asset('assets/admin')}}/assets/css{{(app()->getLocale() == 'ar')? "-rtl" :''}}/skin-modes.css" rel="stylesheet"/>
+<link href="{{asset('assets/admin')}}/assets/css{{(app()->getLocale() == 'ar')? "-rtl" :''}}/dark-style.css" rel="stylesheet"/>
 
 <!-- SIDE-MENU CSS -->
-<link href="{{asset('assets/admin')}}/assets/css-rtl/sidemenu.css" rel="stylesheet">
+<link href="{{asset('assets/admin')}}/assets/css{{(app()->getLocale() == 'ar')? "-rtl" :''}}/sidemenu.css" rel="stylesheet">
 
 <!--PERFECT SCROLL CSS-->
 <link href="{{asset('assets/admin')}}/assets/plugins/p-scroll/perfect-scrollbar.css" rel="stylesheet"/>

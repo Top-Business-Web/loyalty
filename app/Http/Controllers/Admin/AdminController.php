@@ -52,9 +52,9 @@ class AdminController extends Controller
         if ($admin == auth()->guard('admin')->user()) {
             return response(['message'=>"لا يمكن حذف المشرف المسجل به !",'status'=>501],200);
         } else {
-            if (file_exists($admin->image)) {
-                unlink($admin->image);
-            }
+//            if (file_exists($admin->image)) {
+//                unlink($admin->image);
+//            }
             $admin->delete();
             return response(['message'=>'تم الحذف بنجاح','status'=>200],200);
         }

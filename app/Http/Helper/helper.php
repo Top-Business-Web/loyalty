@@ -1,8 +1,43 @@
 <?php
+
+//use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
+
+// ============================================================
+if (!function_exists('cart_get_total')) {
+    function cart_get_total()
+    {
+        return Cart::getTotal();
+    }
+}
+// ============================================================
+
+// ============================================================
+if (!function_exists('cart_views')) {
+    function cart_views()
+    {
+        return Cart::getContent();
+    }
+}
+// ============================================================
+
+// ============================================================
+if (!function_exists('cart_counts')) {
+    function cart_counts()
+    {
+        return Cart::getContent()->count();
+    }
+}
+
+if (!function_exists('get_one_cart')) {
+    function get_one_cart($id)
+    {
+        return Cart::get($id);
+    }
+}
 if (!function_exists('get_file')) {
     function getFile($image): string
     {

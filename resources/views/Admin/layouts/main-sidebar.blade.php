@@ -26,7 +26,7 @@
         <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#">
                 <i class="fe fe-shopping-cart side-menu__icon"></i>
-                <span class="side-menu__label">{{__('admin.products')}}</span><i class="angle fa fa-angle-left"></i>
+                <span class="side-menu__label">{{__('admin.categories')}}</span><i class="angle fa fa-angle-left"></i>
             </a>
             <ul class="slide-menu">
 

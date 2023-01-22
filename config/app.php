@@ -182,6 +182,9 @@ return [
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Buglinjo\LaravelWebp\WebpServiceProvider::class,
 
+        //-==========cart====
+        Darryldecode\Cart\CartServiceProvider::class
+
 
     ],
 
@@ -239,6 +242,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Webp' => Buglinjo\LaravelWebp\Facades\Webp::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
 
     ],
 

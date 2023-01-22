@@ -4,6 +4,7 @@
 //use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
@@ -63,6 +64,17 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
 
 
 });
+
+/* cart */
+Route::post('cart', [CartController::class,'send_cart'])->name('cart');
+Route::get('get_one_cart_/{id}', [CartController::class,'get_one_cart_']);
+Route::get('get_cart_', [CartController::class,'get_cart_']);
+Route::get('view-cart', [CartController::class,'get_cart'])->name('Get-cart');
+Route::get('get_header_cart', [CartController::class,'get_header_cart'])->name('get_header_cart');
+Route::post('update_cart', [CartController::class,'update_cart'])->name('update_cart');
+Route::get('get_ajax_cart/{id}', [CartController::class,'get_ajax_cart']);
+Route::get('delete_cart', [CartController::class,'delete_cart'])->name('delete_cart');
+Route::get('show-product', [ProductController::class,'show_product'])->name('show-product');
 
 
 

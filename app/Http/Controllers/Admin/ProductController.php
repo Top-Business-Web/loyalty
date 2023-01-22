@@ -25,6 +25,8 @@ class ProductController extends Controller
                                     data-id="' . $product->id . '" data-title="' . $product->name_ar . '">
                                     <i class="fas fa-trash"></i>
                             </button>
+                              <a class="btn btn-info add-cart" href="#!" product-id="'. $product->id .'" ><i class=" far fa-shopping-cart"></i>add to cart</a>
+
                        ';
                 })
 
@@ -161,4 +163,11 @@ class ProductController extends Controller
     }
 
 
+    public function show_product()
+    {
+        $product_id = request()->get('product_id');
+        $product = Product::find($product_id);
+        $html = view('admin.pages.components.product-details', compact('product'))->render();
+        return response()->json(['html' => $html]);
+    }
 }

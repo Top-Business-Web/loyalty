@@ -30,5 +30,16 @@ return [
     'arabic'=>'Arabic',
     'english'=>'English',
     'actions'=>'Actions',
+    'search'=>'Search',
+    'sInfoEmpty'=>'No Results',
+    'sZeroRecords'=>' No Results found',
+    'previous'=>'Previous ',
+    'next'=>'Next',
+    'copy'=>'copy ',
+    'print'=>'print',
+    'excel'=>'excel ',
+    'colvis'=>'show',
+    'on-loading'=>'Loading ..',
+
 
 ];

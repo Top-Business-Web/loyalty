@@ -30,5 +30,15 @@ return [
     'arabic'=>'العربية',
     'english'=>'الانجليزية',
     'actions'=>'العمليات',
+    'search'=>'بحث',
+    'sInfoEmpty'=>'لا نتائج',
+    'sZeroRecords'=>'لا يوجد نتائج',
+    'previous'=>'السابق ',
+    'next'=>'التالي',
+    'copy'=>'نسخ ',
+    'print'=>'طباعه',
+    'excel'=>'اكسل ',
+    'colvis'=>'عرض',
+    'on-loading'=>'جاري التحميل ..',
 
 ];

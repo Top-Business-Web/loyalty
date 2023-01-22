@@ -15,16 +15,16 @@
                     [0, "DESC"]
                 ],
                 "language": {
-                    "sProcessing": "جاري التحميل ..",
+                    "sProcessing": "{{__('admin.on-loading')}}",
                     "sLengthMenu": "اظهار _MENU_ سجل",
-                    "sZeroRecords": "لا يوجد نتائج",
+                    "sZeroRecords": "",
                     "sInfo": "اظهار _START_ الى  _END_ من _TOTAL_ سجل",
-                    "sInfoEmpty": "لا نتائج",
-                    "sInfoFiltered": "للبحث",
-                    "sSearch": "بحث :    ",
+                    "sInfoEmpty": " {{__('admin.search')}} : ",
+                    "sInfoFiltered": "{{__('admin.search')}} : ",
+                    "sSearch": "{{__('admin.search')}} :    ",
                     "oPaginate": {
-                        "sPrevious": "السابق",
-                        "sNext": "التالي",
+                        "sPrevious": "{{__('admin.previous')}}",
+                        "sNext": "{{__('admin.next')}}",
                     },
                     buttons: {
                         copyTitle: 'تم النسخ للحافظة <i class="fa fa-check-circle text-success"></i>',
@@ -39,17 +39,17 @@
                 buttons: [
                     {
                         extend: 'copy',
-                        text: 'نسخ',
+                        text: '{{__('admin.copy')}}',
                         className: 'btn-primary'
                     },
                     {
                         extend: 'print',
-                        text: 'طباعة',
+                        text: '{{__('admin.print')}}',
                         className: 'btn-primary'
                     },
                     {
                         extend: 'excel',
-                        text: 'اكسيل',
+                        text: '{{__('admin.excel')}}',
                         className: 'btn-primary'
                     },
                     // {
@@ -59,7 +59,7 @@
                     // },
                     {
                         extend: 'colvis',
-                        text: 'عرض',
+                        text: '{{__('admin.colvis')}}',
                         className: 'btn-primary'
                     },
                 ]

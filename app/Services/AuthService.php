@@ -18,7 +18,7 @@ class AuthService
     public function login($request)
     {
         $rules = [
-            'email' => 'required|exists:users,email',
+            'phone' => 'required|exists:users,phone',
             'password' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules, [
@@ -28,7 +28,7 @@ class AuthService
             $errors = collect($validator->errors())->flatten(1)[0];
             if (is_numeric($errors)) {
                 $errors_arr = [
-                    411 => 'Failed,email not exists',
+                    411 => 'Failed,phone not exists',
                 ];
                 $code = (int)collect($validator->errors())->flatten(1)[0];
                 return helperJson(null, isset($errors_arr[$errors]) ? $errors_arr[$errors] : 500, $code);
@@ -36,13 +36,13 @@ class AuthService
             return response()->json(['data' => null, 'message' => $validator->errors(), 'code' => 422], 200);
         }
         $data = $request->validate($rules);
-        $credentials = request(['email', 'password']);
+        $credentials = request(['phone', 'password']);
 
 
         if (! $token = auth()->attempt($credentials)) {
             return helperJson(null, 'there is no user', 406);
         }
-        $user = User::where('email',$data['email']);
+        $user = User::where('phone',$data['phone']);
         $user = $user->firstOrFail();
         $token = JWTAuth::fromUser($user);
         $user->token = $token;
@@ -59,21 +59,21 @@ class AuthService
         $rules = [
             'phone' => 'required|unique:users,phone',
             'name' => 'required|min:2|max:191',
-            'email' => 'required|unique:users,email',
+            'email' => 'nullable|unique:users,email',
             'location' => 'required',
             'password' => 'required|min:6',
             'role_id' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules, [
             'phone.unique' => 409,
-            'email.unique' => 410,
+//            'email.unique' => 410,
         ]);
         if ($validator->fails()) {
             $errors = collect($validator->errors())->flatten(1)[0];
             if (is_numeric($errors)) {
                 $errors_arr = [
                     409 => 'Failed,phone number already exists',
-                    410 => 'Failed,email already exists',
+//                    410 => 'Failed,email already exists',
                 ];
                 $code = (int)collect($validator->errors())->flatten(1)[0];
                 return helperJson(null, isset($errors_arr[$errors]) ? $errors_arr[$errors] : 500, $code);
@@ -112,13 +112,13 @@ class AuthService
             return $this->returnValidationError($code, $validator,406);
         }
 
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email,'.$user->id,
-        ]);
-        if ($validator->fails()) {
-            $code = $this->returnCodeAccordingToInput($validator);
-            return $this->returnValidationError($code, $validator,407);
-        }
+//        $validator = Validator::make($request->all(), [
+//            'email' => 'required|email|unique:users,email,'.$user->id,
+//        ]);
+//        if ($validator->fails()) {
+//            $code = $this->returnCodeAccordingToInput($validator);
+//            return $this->returnValidationError($code, $validator,407);
+//        }
 
         $validator = Validator::make($request->all(), [
             'image' => 'nullable|image',

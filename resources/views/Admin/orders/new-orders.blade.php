@@ -31,7 +31,7 @@
                                     <th class="min-w-20px">المجموع</th>
                                 <th class="min-w-20px">فاتورة</th>
 
-                                <th class="min-w-20px">العنوان</th>
+{{--                                <th class="min-w-20px">العنوان</th>--}}
 
                                 <th class="min-w-20px">العمليات</th>
                             </tr>

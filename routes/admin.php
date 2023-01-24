@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
@@ -55,7 +56,17 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
 
     Route::get('category_products/{id}',[ProductController::class,'categoryProducts'])->name('category.products');
     Route::get('add_order',[OrderController::class,'store'])->name('add_order');
+    #### orders ####
+    Route::get('newOrders',[OrderController::class,'newOrders'])->name('newOrders');
+    Route::get('currentOrders',[OrderController::class,'currentOrders'])->name('currentOrders');
+    Route::get('endedOrders',[OrderController::class,'endedOrders'])->name('endedOrders');
+    Route::get('orderDetails/{id}',[OrderController::class,'orderDetails'])->name('orderDetails');
+    Route::get('orderBill/{id}',[OrderController::class,'orderBill'])->name('orderBill');
+    Route::POST('orders.delete',[OrderController::class,'destroy'])->name('orders.delete');
+    Route::get('get/invoice/order/{id}',[InvoiceController::class,'getInvoice'])->name('admin.get.invoice.order');
+    //////////////////////////////////////// orders //////////////////////////////////////////////
 
+    Route::get('cancelneworder','OrderController@cancelneworder')->name('admin.cancelneworder');
 
 
     #### Auth ####

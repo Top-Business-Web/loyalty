@@ -4,8 +4,8 @@
         <thead>
         <tr class="fw-bolder text-muted bg-light">
             <th class="min-w-25px">المنتج</th>
-            <th class="min-w-20px">التصنيف</th>
-            <th class="min-w-20px">التصنيف الفرعي</th>
+{{--            <th class="min-w-20px">التصنيف</th>--}}
+{{--            <th class="min-w-20px">التصنيف الفرعي</th>--}}
             <th class="min-w-20px">الكمية</th>
             <th class="min-w-20px">حالة الدفع</th>
             <th class="min-w-20px"> المجموع</th>
@@ -14,11 +14,11 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($offer->offer_details as $detail)
+        @foreach($order->details as $detail)
         <tr>
-            <td>{{$detail->product->title_ar}}</td>
-            <td>{{$detail->product->mainCategory->title_ar}}</td>
-            <td>{{$detail->product->subCategory->title_ar}}</td>
+            <td>{{$detail->product->name_ar}}</td>
+{{--            <td>{{ @$detail->product->category->name_ar}}</td>--}}
+{{--            <td>{{ @$detail->product->subCategory->name_ar}}</td>--}}
             <td>{{$detail->qty}}</td>
             <td>
                 @if($order->status=='delivered')
@@ -27,9 +27,13 @@
                 لم يتم الدفع
                 @endif
             </td>
-            <td>{{$detail->total_price??'0'}}</td>
+            <td>{{$detail->qty* $detail->product->price ??'0'}}</td>
         </tr>
+
         @endforeach
+        <tr>
+            <td colspan="5"> المجموع الكلي {{$order->total_price}}</td>
+        </tr>
         </tbody>
     </table>
 </div>

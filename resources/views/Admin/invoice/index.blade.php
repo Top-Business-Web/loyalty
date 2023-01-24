@@ -34,13 +34,13 @@
         }
         .mainButton{
             background-color: transparent !important;
-            color: #c12935 !important;
+            color: #92603f !important;
             font-size: 18px;
-            border: 1px solid #c12935;
+            border: 1px solid #92603f;
             transition: .2s all;
         }
         .mainButton:hover , .mainButton:focus{
-            background-color: #c12935 !important;
+            background-color: #92603f !important;
             color: #fff !important;
 
         }
@@ -82,7 +82,7 @@
             content: "";
             position: absolute;
             clip-path: polygon(100% 0%, 100% 51%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
-            background-color: #c12935;
+            background-color: #92603f;
             width: 220px;
             height: 65px;
             right: -25px;
@@ -105,8 +105,8 @@
             width: 20%;
             padding: .5rem .75rem;
             vertical-align: auto !important;
-            background-color: #c12935;
-            border: 1px solid #b52632;
+            background-color: #92603f;
+            border: 1px solid #92603f;
         }
 
         th h4{
@@ -165,7 +165,7 @@
                     <div class="titleLogo d-flex aling-items-center justify-content-between ">
                         <h2 class="Ar title">فاتورة ضريبية</h2>
                         <div class="img">
-                            <img src="{{asset('assets/admin/images/WhatsApp Image 2022-07-17 at 10.07.22 AM.jpeg')}}" alt="">
+                            <img src="{{asset('assets/uploads/logo.png')}}" alt="">
                         </div>
                     </div>
                     <div class="d-flex justify-content-between aling-items-center">
@@ -217,32 +217,34 @@
 
 
                             </tr>
-                            @forelse($offer->offer_details as $detail)
+{{--                            @forelse($offer->offer_details as $detail)--}}
+                            @forelse($order->details as $detail)
                             <tr>
                                 <td>
                                     <p>
-                                        @if($offer->type!='other')
-                                        {{$detail->product->title_ar}} </p>
-                                    @else
-                                        المنتج المطلوب غير موجود
-                                        , تم عرض المنتج {{$detail->other->title_ar}} بدلا منه
+{{--                                        @if($offer->type!='other')--}}
+                                        {{$detail->product->name_ar}} </p>
+{{--                                    @else--}}
+{{--                                        المنتج المطلوب غير موجود--}}
+{{--                                        , تم عرض المنتج {{$detail->other->title_ar}} بدلا منه--}}
 
 
-                                        @endif
+{{--                                        @endif--}}
                                 </td>
                                 <td>
-                                    <p>  {{$detail->price}}</p>
+                                    <p>  {{$detail->product->price}}</p>
                                 </td>
                                 <td>
-                                    <p>    @if($detail->type == 'less')
-                                            الكمية المطلوبة غير متوفرة المتاح حاليا {{$detail->available_qty}} صنف
-                                        @else
+                                    <p>
+{{--                                        @if($detail->type == 'less')--}}
+{{--                                            الكمية المطلوبة غير متوفرة المتاح حاليا {{$detail->available_qty}} صنف--}}
+{{--                                        @else--}}
                                                {{$detail->qty}}
-                                        @endif
+{{--                                        @endif--}}
                                     </p>
                                 </td>
                                 <td>
-                                    <p>{{$detail->total_price}}</p>
+                                    <p>{{($detail->qty * $detail->product->price)}}</p>
                                 </td>
                             </tr>
                             @empty
@@ -260,7 +262,7 @@
                                     <h4>إجمالي المبلغ (غير شامل ضريبة القيمة المضافة)</h4>
                                 </th>
                                 <td>
-                                    <p>{{$offer->total_before_tax}} ريال سعودي</p>
+                                    <p>{{$order->total_price}}جنيها</p>
                                 </td>
                             </tr>
                             <tr>
@@ -269,7 +271,10 @@
                                     <h4>مجموع ضريبة القيمة المضافة </h4>
                                 </th>
                                 <td>
-                                    <p>{{$offer->total_tax}} ريال سعودي</p></bdo>
+                                    <p>
+
+{{--                                        {{$offer->total_tax}}--}}
+                                          0 جنيها </p></bdo>
                                 </td>
 
                             </tr>
@@ -279,7 +284,7 @@
                                     <h4>إجمالي المبلغ</h4>
                                 </th>
                                 <td>
-                                    <p>{{$offer->total_price}} ريال سعودي</p>
+                                    <p>{{$order->total_price}}جنيها </p>
                                 </td>
 
                             </tr>

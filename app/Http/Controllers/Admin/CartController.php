@@ -36,6 +36,14 @@ class CartController extends Controller
 //        return $cartCollections;
         return view('admin.cart.index')->with(['cartCollections' => $cartCollections]);
     }
+    public function cart_table()
+    {
+        $cartCollections = Cart::getContent()->values();
+//        return $cartCollections;
+        return view('admin.cart.components.cart_table')->with(['cartCollections' => $cartCollections]);
+    }
+
+
 
     public function get_ajax_cart($id)
     {

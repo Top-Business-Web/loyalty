@@ -20,7 +20,7 @@
                 return false;
             }
             ajax_cart(product_id, quantity);
-            return false;
+            // return false;
         }); // end click
         function ajax_cart(product_id, quantity) {
             let url = '{{ route("cart") }}';
@@ -39,6 +39,7 @@
                     $('.cart_count').html(data.cart_count)
                     toastr.success('{{trans('web_lang.added_to_chart')}}', {"positionClass": "toast-top-right", "progressBar": true});
                     console.log(data);
+                    $('#cart_table_div').load('cart_table');
                 },
                 error: function (error, exception) {
                     console.log(error);

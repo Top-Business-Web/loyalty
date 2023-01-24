@@ -19,6 +19,8 @@
                 });
                 return false;
             }
+
+
             ajax_cart(product_id, quantity);
             // return false;
         }); // end click

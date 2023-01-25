@@ -23,8 +23,8 @@ class User extends Authenticatable implements JWTSubject
         return get_file($this->attributes['image']);
     }
 
-    public function sites(){
-        return $this->hasMany(Site::class,'user_id');
+    public function categories(){
+        return $this->hasMany(Category::class,'user_id');
     }
 
 
@@ -42,5 +42,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }//end of getJWTCustomClaims
+
+
 
 }

@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Api\Auth;
+namespace App\Http\Controllers\Api\Provider\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Home\PostResource;
 use App\Models\Post;
 use App\Models\Views;
 use App\Services\PostService;
 use App\Traits\DefaultImage;
 use Illuminate\Http\Request;
 use Validator;
+use function collect;
+use function helperJson;
 
 class AuthorizedPostController extends Controller
 {

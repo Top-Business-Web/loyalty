@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\Provider\Auth\AuthController;
-use App\Http\Controllers\Api\Provider\Auth\CodeCheckController;
-use App\Http\Controllers\Api\Provider\Auth\ForgotPasswordController;
-use App\Http\Controllers\Api\Provider\Auth\ResetPasswordController;
-use App\Http\Controllers\Api\Provider\CategoryController;
-use App\Http\Controllers\Api\Provider\ProductController;
+use App\Http\Controllers\Api\Client\Auth\CodeCheckController;
+use App\Http\Controllers\Api\Client\Auth\AuthController;
+use App\Http\Controllers\Api\Client\Auth\ForgotPasswordController;
+use App\Http\Controllers\Api\Client\Auth\ResetPasswordController;
+use App\Http\Controllers\Api\Client\CategoryController;
+use App\Http\Controllers\Api\Client\ProductController;
+use App\Http\Controllers\Api\Client\ProviderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,23 +31,15 @@ Route::group(['prefix' => 'auth'],function (){
     Route::get('my-profile',[AuthController::class, 'me']);
 //    Route::post('insert-token',[NotificationController::class, 'insert_token']);
 });
-Route::group(['prefix' => 'categories'],function (){
-    Route::get('list', [CategoryController::class, 'index']);
-    Route::post('store', [CategoryController::class, 'store']);
-    Route::post('update/{id}', [CategoryController::class, 'update']);
-    Route::post('delete/{id}', [CategoryController::class, 'destroy']);
+Route::group(['prefix' => 'providers'],function (){
+    Route::get('list', [ProviderController::class, 'index']);
+
 });
 
 Route::group(['prefix' => 'products'],function (){
-    Route::get('list', [ProductController::class, 'index']);
-    Route::post('store', [ProductController::class, 'store']);
-    Route::post('update/{id}', [ProductController::class, 'update']);
-    Route::post('delete/{id}', [ProductController::class, 'destroy']);
+    Route::get('list/{category_id}', [ProductController::class, 'index']);
 });
 
 
-Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {
-
-});
 
 

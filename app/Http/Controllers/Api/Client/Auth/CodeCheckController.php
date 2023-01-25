@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api\Auth;
+namespace App\Http\Controllers\Api\Client\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\ResetCodePassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use function helperJson;
+use function now;
+use function response;
 
 class CodeCheckController extends Controller
 {

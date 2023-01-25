@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Api\Auth;
+namespace App\Http\Controllers\Api\Provider\Auth;
 
+use App\Http\Controllers\Api\Auth\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\{CompanyResource, UserResources};
 use App\Models\Company;
-use App\Services\AuthService;
-use App\Traits\DefaultImage;
 use App\Models\User;
-//use App\Models\PhoneTokens;
-use App\Traits\GeneralTrait;
+use App\Services\AuthService;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 use Laravel\Socialite\Facades\Socialite;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use App\Http\Resources\{CompanyResource, UserResources};
+use function auth;
+use function helperJson;
+use function now;
+use function response;
+
+//use App\Models\PhoneTokens;
 
 class AuthController extends Controller
 {

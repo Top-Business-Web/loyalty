@@ -892,3 +892,10 @@ if (!function_exists('helperJson')) {
         return $json;
     }
 }
+if(!function_exists('lanng')){
+
+    function lanng(){
+
+        return Config::get('app.locale');
+    }
+}

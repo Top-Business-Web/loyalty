@@ -17,4 +17,7 @@ class Product extends Model
         return get_file($this->attributes['image']);
     }
 
+    public function products(){
+        return $this->hasMany(Product::class,'category_id');
+    }
 }

@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name',255)->nullable();
             $table->string('email',255)->nullable();
+            $table->string('phone_code',255)->nullable();
             $table->string('phone',255)->nullable();
             $table->string('location',255)->nullable();
             $table->string('password',255);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Auth;
+namespace App\Http\Controllers\Api\Provider\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\SendCodeResetPassword;
@@ -8,6 +8,8 @@ use App\Models\ResetCodePassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use function helperJson;
+use function response;
 
 class ForgotPasswordController extends Controller
 {

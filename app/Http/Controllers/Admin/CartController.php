@@ -34,13 +34,13 @@ class CartController extends Controller
     {
         $cartCollections = Cart::getContent()->values();
 //        return $cartCollections;
-        return view('admin.cart.index')->with(['cartCollections' => $cartCollections]);
+        return view('Admin.cart.index')->with(['cartCollections' => $cartCollections]);
     }
     public function cart_table()
     {
         $cartCollections = Cart::getContent()->values();
 //        return $cartCollections;
-        return view('admin.cart.components.cart_table')->with(['cartCollections' => $cartCollections]);
+        return view('Admin.cart.components.cart_table')->with(['cartCollections' => $cartCollections]);
     }
 
 

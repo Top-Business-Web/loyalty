@@ -83,7 +83,7 @@
         <!-- Create Or Edit Modal -->
     </div>
     @include('Admin/layouts/myAjaxHelper')
-    @include('admin.general_components.ajax-code')
+    @include('Admin.general_components.ajax-code')
 
 @endsection
 @section('ajaxCalls')

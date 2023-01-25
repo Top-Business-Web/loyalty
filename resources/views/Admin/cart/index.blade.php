@@ -1,4 +1,4 @@
-@extends('admin/layouts/master')
+@extends('Admin/layouts/master')
 
 
 @section('title')
@@ -110,7 +110,7 @@
     </div>
     @include('Admin/layouts/myAjaxHelper')
 {{--    @include('admin.general_components.ajax-code')--}}
-    @include('admin.general_components.ajax-code')
+    @include('Admin.general_components.ajax-code')
 
 @endsection
 

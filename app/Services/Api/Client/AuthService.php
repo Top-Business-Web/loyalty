@@ -62,6 +62,7 @@ class AuthService
     public function register($request)
     {
         $rules = [
+            'phone_code' => 'nullable',
             'phone' => 'required|unique:users,phone',
             'name' => 'required|min:2|max:191',
             'email' => 'nullable|unique:users,email',

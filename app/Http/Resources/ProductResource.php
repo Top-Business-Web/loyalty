@@ -16,7 +16,7 @@ class ProductResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'name'=>$this->{"name_".lanng()},
+            'name'=>$this->{"name_".accept_language()},
             'price'=>$this->price,
             'image'=>$this->image,
         ];

@@ -16,7 +16,7 @@ class CategoryResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'name'=>$this->{"name_".lanng()},
+            'name'=>$this->{"name_".accept_language()},
             'image'=>$this->image,
         ];
     }

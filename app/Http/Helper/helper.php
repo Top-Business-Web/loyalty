@@ -899,3 +899,11 @@ if(!function_exists('lanng')){
         return Config::get('app.locale');
     }
 }
+
+if(!function_exists('accept_language')) {
+
+    function accept_language()
+    {
+        return request()->header('Accept-Language');
+    }
+}

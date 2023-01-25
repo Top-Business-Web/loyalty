@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'auth'],function (){
+Route::group(['prefix' => 'provider/auth'],function (){
     Route::post('password/email',  ForgotPasswordController::class);
     Route::post('password/code/check', CodeCheckController::class);
     Route::post('password/reset', ResetPasswordController::class);
@@ -30,14 +30,14 @@ Route::group(['prefix' => 'auth'],function (){
     Route::get('my-profile',[AuthController::class, 'me']);
 //    Route::post('insert-token',[NotificationController::class, 'insert_token']);
 });
-Route::group(['prefix' => 'categories'],function (){
+Route::group(['prefix' => 'provider/categories'],function (){
     Route::get('list', [CategoryController::class, 'index']);
     Route::post('store', [CategoryController::class, 'store']);
     Route::post('update/{id}', [CategoryController::class, 'update']);
     Route::post('delete/{id}', [CategoryController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'products'],function (){
+Route::group(['prefix' => 'provider/products'],function (){
     Route::get('list', [ProductController::class, 'index']);
     Route::post('store', [ProductController::class, 'store']);
     Route::post('update/{id}', [ProductController::class, 'update']);

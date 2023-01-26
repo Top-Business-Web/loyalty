@@ -24,7 +24,7 @@ class AuthService
     {
         $rules = [
             'phone' => 'required|exists:users,phone',
-            'password' => 'required',
+//            'password' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules, [
             'phone.exists' => 411,

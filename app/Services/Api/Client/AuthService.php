@@ -46,7 +46,7 @@ class AuthService
         $loggedIn['password'] =  Hash::make('123456');
 
 
-        if (! $token = auth()->attempt($loggedIn)) {
+        if (! $token = auth('user-api')->attempt($loggedIn)) {
             return helperJson(null, 'there is no user', 406);
         }
         $user = User::where('phone',$data['phone']);

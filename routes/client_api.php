@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Client\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Client\CategoryController;
 use App\Http\Controllers\Api\Client\ProductController;
 use App\Http\Controllers\Api\Client\ProviderController;
+use App\Http\Controllers\Api\Client\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -24,7 +24,7 @@ class AuthService
     {
         $rules = [
             'phone' => 'required|exists:users,phone',
-            'password' => 'required',
+//            'password' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules, [
             'email.exists' => 411,
@@ -41,9 +41,9 @@ class AuthService
             return response()->json(['data' => null, 'message' => $validator->errors(), 'code' => 422], 200);
         }
         $data = $request->validate($rules);
-        $credentials = request(['phone', 'password']);
+        $credentials = request(['phone']);
 
-
+        $credentials['password'] = Hash::make('123456');
         if (! $token = auth()->attempt($credentials)) {
             return helperJson(null, 'there is no user', 406);
         }
@@ -67,7 +67,7 @@ class AuthService
             'name' => 'required|min:2|max:191',
             'email' => 'nullable|unique:users,email',
             'location' => 'required',
-            'password' => 'required|min:6',
+//            'password' => 'required|min:6',
             'role_id' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules, [
@@ -93,7 +93,7 @@ class AuthService
             $data['image'] = $this->uploadFiles('users', $request->file('image'));
         }
 
-        $data['password'] = Hash::make($data['password']);
+        $data['password'] = Hash::make('123456');
         $user = User::create($data);
 
 
@@ -111,7 +111,7 @@ class AuthService
         $user = Auth()->user();
         $validator = Validator::make($request->all(), [
             'phone'      => 'required|unique:users,phone,'.$user->id,
-            'password'   => 'nullable',
+//            'password'   => 'nullable',
         ]);
         if ($validator->fails()) {
             $code = $this->returnCodeAccordingToInput($validator);
@@ -140,12 +140,12 @@ class AuthService
             $data['image'] = $this->uploadFiles('users', $request->file('image'));
         }
 
-        if($request->has('password')
-            && $request->password != null){
-            $data['password'] = Hash::make($request->password);
-        }else{
-            unset($data['password']);
-        }
+//        if($request->has('password')
+//            && $request->password != null){
+//            $data['password'] = Hash::make($request->password);
+//        }else{
+//            unset($data['password']);
+//        }
 
 
         $user->update($data);

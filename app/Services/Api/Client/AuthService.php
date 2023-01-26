@@ -41,10 +41,12 @@ class AuthService
             return response()->json(['data' => null, 'message' => $validator->errors(), 'code' => 422], 200);
         }
         $data = $request->validate($rules);
-        $credentials = request(['phone']);
+        $loggedIn['phone'] = request('phone');
+        $loggedIn['phone_code'] = request('phone');
+        $loggedIn['password'] =  Hash::make('123456');
 
-        $credentials['password'] = Hash::make('123456');
-        if (! $token = auth()->attempt($credentials)) {
+
+        if (! $token = auth()->attempt($loggedIn)) {
             return helperJson(null, 'there is no user', 406);
         }
         $user = User::where('phone',$data['phone']);

@@ -66,7 +66,7 @@ class AuthService
             'phone' => 'required|unique:users,phone',
             'name' => 'required|min:2|max:191',
             'email' => 'nullable|unique:users,email',
-            'location' => 'required',
+            'location' => 'nullable',
 //            'password' => 'required|min:6',
             'role_id' => 'required',
         ];

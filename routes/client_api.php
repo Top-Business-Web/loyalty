@@ -29,6 +29,8 @@ Route::group(['prefix' => 'client/auth'],function (){
     Route::POST('update-profile',[AuthController::class, 'update_profile']);
     Route::POST('delete-account',[AuthController::class, 'deleteAccount']);
     Route::get('my-profile',[AuthController::class, 'me']);
+    Route::POST('contact-us',[ContactController::class, 'store']);
+
 //    Route::post('insert-token',[NotificationController::class, 'insert_token']);
 });
 Route::group(['prefix' => 'client/providers'],function (){

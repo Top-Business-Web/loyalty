@@ -24,10 +24,10 @@ class AuthService
     {
         $rules = [
             'phone' => 'required|exists:users,phone',
-//            'password' => 'required',
+            'password' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules, [
-            'email.exists' => 411,
+            'phone.exists' => 411,
         ]);
         if ($validator->fails()) {
             $errors = collect($validator->errors())->flatten(1)[0];
@@ -38,13 +38,13 @@ class AuthService
                 $code = (int)collect($validator->errors())->flatten(1)[0];
                 return helperJson(null, isset($errors_arr[$errors]) ? $errors_arr[$errors] : 500, $code);
             }
-            return response()->json(['data' => null, 'message' => $validator->errors(), 'code' => 422], 200);
+            return response()->json(['data' => null, 'message' => $validator->errors()->first(), 'code' => 422], 200);
         }
         $data = $request->validate($rules);
         $loggedIn['phone'] = request('phone');
-        $loggedIn['phone_code'] = request('phone');
-        $loggedIn['password'] =  Hash::make('123456');
-
+        $loggedIn['phone_code'] = request('phone_code');
+        $loggedIn['role_id'] =  2;
+        $loggedIn['password'] =  '123456';
 
         if (! $token = auth('user-api')->attempt($loggedIn)) {
             return helperJson(null, 'there is no user', 406);

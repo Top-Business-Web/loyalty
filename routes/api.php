@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Provider\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Provider\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Provider\CategoryController;
 use App\Http\Controllers\Api\Provider\ProductController;
+use App\Http\Controllers\Api\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +47,7 @@ Route::group(['prefix' => 'provider/products'],function (){
 
 
 Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {
-    Route::get('setting','SettingController@setting');
+    Route::get('setting',[SettingController::class, 'index']);
 
 });
 

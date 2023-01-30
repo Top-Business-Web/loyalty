@@ -12,7 +12,7 @@ class SettingController extends Controller
 {
     use GeneralTrait;
 
-    public function setting(){
+    public function index(){
         $data = Setting::first();
         return helperJson($data);
     }

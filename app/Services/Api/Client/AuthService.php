@@ -159,7 +159,7 @@ class AuthService
 
     public function delete_account($request)
     {
-        $user = auth()->user('auth-api');
+        $user = auth('auth-api')->user();
         if(!isset($user)){
             return helperJson(null, 'This Account not found',404);
         }

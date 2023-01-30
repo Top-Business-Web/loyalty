@@ -14,6 +14,7 @@ class OrderService
     public function list(){
         $provider = auth('user-api')->user();
         $orders = Order::where('provider_id', $provider->id)->get();
+//        dd(OrderResource::collection($orders));
         return helperJson(OrderResource::collection($orders), '');
     }
 

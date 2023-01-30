@@ -2,12 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\UserResources;
-use App\Http\Resources\OrderDetailsResource;
-use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OrderResource extends JsonResource
+class OrderDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,10 +16,8 @@ class OrderResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'total_price'=>$this->total_price,
-            'note'=>$this->note,
-            'user_data'=> User::select('name','phone')->find($this->user->id),
-            'order_details'=> OrderDetailsResource::collection($this->details),
+            'qty'=>$this->qty,
+            'product'=> new ProductResource($this->product),
         ];
     }
 }

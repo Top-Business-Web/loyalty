@@ -46,6 +46,7 @@ Route::group(['prefix' => 'provider/products'],function (){
 
 
 Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {
+    Route::get('setting','SettingController@setting');
 
 });
 

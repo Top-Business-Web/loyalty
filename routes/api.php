@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Provider\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Provider\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Provider\CategoryController;
 use App\Http\Controllers\Api\Provider\ProductController;
+use App\Http\Controllers\Api\Provider\OrderController;
 use App\Http\Controllers\Api\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,13 @@ Route::group(['prefix' => 'provider/products'],function (){
     Route::post('store', [ProductController::class, 'store']);
     Route::post('update/{id}', [ProductController::class, 'update']);
     Route::post('delete/{id}', [ProductController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'provider/orders'],function (){
+    Route::get('list', [OrderController::class, 'index']);
+    Route::post('store', [OrderController::class, 'store']);
+//    Route::post('update/{id}', [ProductController::class, 'update']);
+    Route::post('delete/{id}', [OrderController::class, 'destroy']);
 });
 
 

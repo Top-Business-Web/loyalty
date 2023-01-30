@@ -161,11 +161,13 @@ class AuthService
     {
         $user = auth()->user();
         if(!isset($user)){
-            return $this->returnData('data', null,"This Account not found",404);
+//            return $this->returnData('data', null,"This Account not found",404);
+            return helperJson(null, 'login successfully',404);
         }
 
         User::find($user->id)->delete();
-        return $this->returnData('data', null,"Account Deleted successfully",200);
+        return helperJson(null, 'Account Deleted successfully',200);
+
     }//end fun
 
 

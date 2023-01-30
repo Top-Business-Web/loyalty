@@ -159,10 +159,9 @@ class AuthService
 
     public function delete_account($request)
     {
-        $user = auth()->user();
+        $user = auth()->user('auth-api');
         if(!isset($user)){
-//            return $this->returnData('data', null,"This Account not found",404);
-            return helperJson(null, 'login successfully',404);
+            return helperJson(null, 'This Account not found',404);
         }
 
         User::find($user->id)->delete();

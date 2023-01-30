@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Validator;
 class ProductService
 {
     use DefaultImage,GeneralTrait;
-    public function index(){
+    public function index($request,$category_id){
         $user = auth()->user();
-        $products = Product::where('user_id', $user->id)->get();
+        $products = Product::where(['user_id'=> $user->id, 'category_id'=> $category_id])->get();
 
         return helperJson(ProductResource::collection($products), '');
 

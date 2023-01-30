@@ -39,7 +39,7 @@ Route::group(['prefix' => 'provider/categories'],function (){
 });
 
 Route::group(['prefix' => 'provider/products'],function (){
-    Route::get('list', [ProductController::class, 'index']);
+    Route::get('list/{category_id}', [ProductController::class, 'index']);
     Route::post('store', [ProductController::class, 'store']);
     Route::post('update/{id}', [ProductController::class, 'update']);
     Route::post('delete/{id}', [ProductController::class, 'destroy']);

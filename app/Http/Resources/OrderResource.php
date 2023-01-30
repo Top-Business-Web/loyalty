@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Http\Resources\UserResources;
 use App\Http\Resources\OrderDetailsResource;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderResource extends JsonResource
@@ -23,6 +24,7 @@ class OrderResource extends JsonResource
             'note'=>$this->note,
             'user_data'=> User::select('name','phone')->find($this->user->id),
             'order_details'=> OrderDetailsResource::collection($this->details),
+            'data_time'=> $this->created_at->format('d/m/Y h:m'),
         ];
     }
 }

@@ -31,6 +31,11 @@ class CategoryController extends Controller
         return $this->categoryService->store($request);
     }
 
+    public function find(request $request, $id){
+
+        return $this->categoryService->find($request,$id);
+    }
+
     public function update(request $request,$id){
 
         return $this->categoryService->update($request,$id);

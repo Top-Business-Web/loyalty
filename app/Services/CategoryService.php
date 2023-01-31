@@ -41,6 +41,13 @@ class CategoryService
         return helperJson(new CategoryResource($category), 'تمت الاضافة بنجاح');
     }
 
+    public function find($request, $id)
+    {
+        $category = Category::find($id);
+
+        return helperJson($category, '',200);
+    }//end fun
+
     public function update($request,$id){
 
         $rules = [

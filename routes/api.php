@@ -35,6 +35,7 @@ Route::group(['prefix' => 'provider/auth'],function (){
 Route::group(['prefix' => 'provider/categories'],function (){
     Route::get('list', [CategoryController::class, 'index']);
     Route::post('store', [CategoryController::class, 'store']);
+    Route::get('find/{id}', [CategoryController::class, 'find']);
     Route::post('update/{id}', [CategoryController::class, 'update']);
     Route::post('delete/{id}', [CategoryController::class, 'destroy']);
 });
@@ -42,6 +43,7 @@ Route::group(['prefix' => 'provider/categories'],function (){
 Route::group(['prefix' => 'provider/products'],function (){
     Route::get('list/{category_id}', [ProductController::class, 'index']);
     Route::post('store', [ProductController::class, 'store']);
+    Route::get('find/{id}', [ProductController::class, 'find']);
     Route::post('update/{id}', [ProductController::class, 'update']);
     Route::post('delete/{id}', [ProductController::class, 'destroy']);
 });

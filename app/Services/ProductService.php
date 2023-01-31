@@ -43,6 +43,13 @@ class ProductService
         return helperJson(new ProductResource($product), 'تمت الاضافة بنجاح');
     }
 
+    public function find($request, $id)
+    {
+        $product = Product::find($id);
+
+        return helperJson($product, '',200);
+    }//end fun
+
     public function update( $request,$id){
 
         $rules = [

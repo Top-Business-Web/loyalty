@@ -25,10 +25,7 @@ class OrderController extends Controller
                                     data-id="' . $orders->id . '" data-title="' . @$orders->user->name . '">
                                     <i class="fas fa-trash"></i>
                             </button>
-                             <button onclick="cancel(' .$orders->id. ')" class="btn btn-pill btn-info"
-                                    data-id="' . $orders->id . '" >
-                                    الغاء
-                            </button>
+                       
                        ';
                 })
                 ->addColumn('details', function ($orders) {

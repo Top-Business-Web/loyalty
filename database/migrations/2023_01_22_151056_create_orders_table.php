@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
 
             $table->unsignedBigInteger('provider_id')->nullable();
             $table->foreign('provider_id')->references('id')
-                ->on('admins')->onDelete('cascade');
+                ->on('users')->onDelete('cascade');
 
             $table->text('note')->nullable();
             $table->enum('status',['new','offered','accepted','rejected','preparing','on_way','delivered'])

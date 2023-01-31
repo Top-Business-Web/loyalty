@@ -28,6 +28,11 @@ class ProductController extends Controller
         return $this->productService->store($request);
     }
 
+    public function find(request $request, $id){
+
+        return $this->productService->find($request,$id);
+    }
+
     public function update(request $request,$id){
 
         return $this->productService->update($request,$id);

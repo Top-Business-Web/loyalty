@@ -40,6 +40,7 @@ return [
     'excel'=>'excel ',
     'colvis'=>'show',
     'on-loading'=>'Loading ..',
+    'orders'=>'Orders',
 
 
 ];

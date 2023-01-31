@@ -40,5 +40,6 @@ return [
     'excel'=>'اكسل ',
     'colvis'=>'عرض',
     'on-loading'=>'جاري التحميل ..',
+    'orders'=>'طلبات',
 
 ];

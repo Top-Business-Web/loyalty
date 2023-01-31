@@ -35,6 +35,18 @@
 
             </ul>
         </li>
+
+        <li class="slide">
+            <a class="side-menu__item" data-toggle="slide" href="#">
+                <i class="fe fe-shopping-cart side-menu__icon"></i>
+                <span class="side-menu__label">{{__('admin.orders')}}</span><i class="angle fa fa-angle-left"></i>
+            </a>
+            <ul class="slide-menu">
+
+                <li><a href="{{ route('newOrders') }}" class="slide-item">{{__('admin.orders')}}</a></li>
+
+            </ul>
+        </li>
         <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#">
                 <i class="fe fe-settings side-menu__icon"></i>

@@ -17,7 +17,7 @@
                             <div class="d-flex flex-wrap">
                                 <div class="me-3">
                                     <p class="text-muted mb-2">{{__('admin.categories')}}</p>
-                                    <h5 class="mb-0">{{ App\Models\Category::all()}}</h5>
+                                    <h5 class="mb-0">{{ App\Models\Category::select('id')->get()->count()}}</h5>
                                 </div>
 
                                 <div class="avatar-sm ms-auto">
@@ -38,7 +38,7 @@
                             <div class="d-flex flex-wrap">
                                 <div class="me-3">
                                     <p class="text-muted mb-2">{{__('admin.products')}}</p>
-                                    <h5 class="mb-0">{{ App\Models\Product::all()}}</h5>
+                                    <h5 class="mb-0">{{ App\Models\Product::select('id')->get()->count()}}</h5>
                                 </div>
 
                                 <div class="avatar-sm ms-auto">
@@ -57,7 +57,7 @@
                             <div class="d-flex flex-wrap">
                                 <div class="me-3">
                                     <p class="text-muted mb-2">{{__('admin.orders')}}</p>
-                                    <h5 class="mb-0">4,235</h5>
+                                    <h5 class="mb-0">{{ App\Models\Order::select('id')->get()->count()}}</h5>
                                 </div>
 
                                 <div class="avatar-sm ms-auto">

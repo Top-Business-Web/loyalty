@@ -52,12 +52,10 @@ class PaytapsPaymentController extends Controller
 
     public function callback_tap()
     {
-        $capture = Paypage::capture('tran_ref','order_id','amount','capture description');
-        dd($capture);
+
     }
     public function return_paytap()
     {
-        $capture = Paypage::capture('tran_ref','order_id','amount','capture description');
-        dd($capture);
+
     }
 }

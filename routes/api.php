@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Provider\CategoryController;
 use App\Http\Controllers\Api\Provider\ProductController;
 use App\Http\Controllers\Api\Provider\OrderController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\PaytapsPaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,7 +59,10 @@ Route::group(['prefix' => 'provider/orders'],function (){
 
 Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {
     Route::get('setting',[SettingController::class, 'index']);
-
+    Route::post('/paytap/store',[PaytapsPaymentController::class,'store'])->name('paytap');
+    Route::get('/paytap_home',[PaytapsPaymentController::class,'callback_tap'])->name('callback_tap');
+    Route::get('/return_paytap',[PaytapsPaymentController::class,'return_paytap'])->name('return_paytap');
 });
+
 
 

@@ -136,6 +136,7 @@ class ComposerStaticInitebadef4a2fe32872459d1dcc93c1fe4b
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
+            'Paytabscom\\Laravel_paytabs\\' => 27,
         ),
         'O' => 
         array (
@@ -480,6 +481,10 @@ class ComposerStaticInitebadef4a2fe32872459d1dcc93c1fe4b
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'Paytabscom\\Laravel_paytabs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paytabscom/laravel_paytabs/src',
         ),
         'Opis\\Closure\\' => 
         array (
@@ -6292,6 +6297,12 @@ class ComposerStaticInitebadef4a2fe32872459d1dcc93c1fe4b
         'PHPUnit\\Util\\Xml\\SuccessfulSchemaDetectionResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/SuccessfulSchemaDetectionResult.php',
         'PHPUnit\\Util\\Xml\\ValidationResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/ValidationResult.php',
         'PHPUnit\\Util\\Xml\\Validator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/Validator.php',
+        'Paytabscom\\Laravel_paytabs\\Controllers\\PaytabsLaravelListenerApi' => __DIR__ . '/..' . '/paytabscom/laravel_paytabs/src/Controllers/PaytabsLaravelListenerApi.php',
+        'Paytabscom\\Laravel_paytabs\\Facades\\paypage' => __DIR__ . '/..' . '/paytabscom/laravel_paytabs/src/Facades/paypage.php',
+        'Paytabscom\\Laravel_paytabs\\PaypageServiceProvider' => __DIR__ . '/..' . '/paytabscom/laravel_paytabs/src/PaypageServiceProvider.php',
+        'Paytabscom\\Laravel_paytabs\\Services\\IpnRequest' => __DIR__ . '/..' . '/paytabscom/laravel_paytabs/src/Services/IpnRequest.php',
+        'Paytabscom\\Laravel_paytabs\\paypage' => __DIR__ . '/..' . '/paytabscom/laravel_paytabs/src/paypage.php',
+        'Paytabscom\\Laravel_paytabs\\paytabs_core' => __DIR__ . '/..' . '/paytabscom/laravel_paytabs/src/paytabs_core.php',
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',

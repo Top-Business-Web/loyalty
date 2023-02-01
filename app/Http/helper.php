@@ -11,6 +11,7 @@ if (!function_exists('admin')) {
 	}
 }
 
+
 if (!function_exists('loggedAdmin')) {
 	function loggedAdmin($field = null){
 		return auth()->guard('admin')->user()->$field;

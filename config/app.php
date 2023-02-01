@@ -183,7 +183,8 @@ return [
         Buglinjo\LaravelWebp\WebpServiceProvider::class,
 
         //-==========cart====
-        Darryldecode\Cart\CartServiceProvider::class
+        Darryldecode\Cart\CartServiceProvider::class,
+        Paytabscom\Laravel_paytabs\PaypageServiceProvider::class,
 
 
     ],

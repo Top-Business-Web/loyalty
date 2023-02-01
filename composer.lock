@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2eedbadd649503bde172006948e95008",
+    "content-hash": "61ef80b5f438e012debfde15a81c4e4c",
     "packages": [
         {
             "name": "a6digital/laravel-default-profile-image",
@@ -3935,6 +3935,53 @@
                 "source": "https://github.com/paragonie/sodium_compat/tree/v1.19.0"
             },
             "time": "2022-09-26T03:40:35+00:00"
+        },
+        {
+            "name": "paytabscom/laravel_paytabs",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paytabscom/paytabs-php-laravel-package.git",
+                "reference": "50c191b4e476b685a987e43bbfe5f0069a8e5c9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paytabscom/paytabs-php-laravel-package/zipball/50c191b4e476b685a987e43bbfe5f0069a8e5c9e",
+                "reference": "50c191b4e476b685a987e43bbfe5f0069a8e5c9e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0|^8.0"
+            },
+            "type": "composer-package",
+            "autoload": {
+                "psr-4": {
+                    "Paytabscom\\Laravel_paytabs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Walaa Elsaeed",
+                    "email": "w.elsaeed@paytabs.com"
+                }
+            ],
+            "description": "Official laravel package to implement PayTabs integration with laravel apps",
+            "homepage": "https://site.paytabs.com/en/",
+            "keywords": [
+                "E-comerce",
+                "laravel",
+                "payments",
+                "paytabs"
+            ],
+            "support": {
+                "issues": "https://github.com/paytabscom/paytabs-php-laravel-package/issues",
+                "source": "https://github.com/paytabscom/paytabs-php-laravel-package/tree/V1.4.1"
+            },
+            "time": "2023-01-10T20:56:02+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",

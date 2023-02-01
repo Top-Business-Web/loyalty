@@ -56,6 +56,7 @@
     52 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     53 => 'Buglinjo\\LaravelWebp\\WebpServiceProvider',
     54 => 'Darryldecode\\Cart\\CartServiceProvider',
+    55 => 'Paytabscom\\Laravel_paytabs\\PaypageServiceProvider',
   ),
   'eager' => 
   array (
@@ -98,6 +99,7 @@
     36 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     37 => 'Buglinjo\\LaravelWebp\\WebpServiceProvider',
     38 => 'Darryldecode\\Cart\\CartServiceProvider',
+    39 => 'Paytabscom\\Laravel_paytabs\\PaypageServiceProvider',
   ),
   'deferred' => 
   array (

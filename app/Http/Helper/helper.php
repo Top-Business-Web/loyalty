@@ -6,6 +6,14 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 
+if (!function_exists('uniq_id_number')) {
+    function uniq_id_number(){
+        $today = date("Ymd");
+        $rand = strtoupper(substr(uniqid(sha1(time())),0,10));
+        return $today.$rand;
+    }
+}
+
 // ============================================================
 if (!function_exists('cart_get_total')) {
     function cart_get_total()

@@ -36,7 +36,7 @@ class PaytapsPaymentController extends Controller
 //            ->sendShippingDetails($same_as_billing, $name = null, $email = null, $phone = null, $street1= null, $city = null, $state = null, $country = null, $zip = null, $ip = null)->sendHideShipping($on = false)
 //            ->sendURLs($return, $callback)->sendLanguage($language)->sendFramed($on = false)->create_pay_page(); // to initiate payment page
 
-        $pay =  PayTabClass::sendPaymentCode('all')
+        $pay =  paypage::sendPaymentCode('all')
             ->sendTransaction($transaction_type)
             ->sendCart($cart_id,$cart_amount,$cart_description)
             ->sendCustomerDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip)

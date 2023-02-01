@@ -13,7 +13,7 @@ class SearchController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::select('id,name,phone')->where('phone','like', "%".$request->search_key."%")->get();
+        $users = User::select('id','name','phone')->where('role_id',2)->where('phone','like', "%".$request->search_key."%")->get();
         return helperJson($users, '',200);
     }
 }

@@ -52,10 +52,8 @@ class PaytapsPaymentController extends Controller
 
     public function callback_tap()
     {
-
     }
     public function return_paytap()
     {
-
     }
 }

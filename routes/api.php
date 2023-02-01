@@ -60,7 +60,7 @@ Route::group(['prefix' => 'provider/orders'],function (){
 Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {
     Route::get('setting',[SettingController::class, 'index']);
     Route::get('/paytap/store',[PaytapsPaymentController::class,'store'])->name('paytap');
-    Route::get('/paytap_home',[PaytapsPaymentController::class,'callback_tap'])->name('callback_tap');
+//    Route::get('/paytap_home',[PaytapsPaymentController::class,'callback_tap'])->name('callback_tap');
     Route::get('/return_paytap',[PaytapsPaymentController::class,'return_paytap'])->name('return_paytap');
 
 });

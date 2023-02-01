@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Provider\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Provider\CategoryController;
 use App\Http\Controllers\Api\Provider\ProductController;
 use App\Http\Controllers\Api\Provider\OrderController;
+use App\Http\Controllers\Api\Provider\SearchController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\PaytapsPaymentController;
 use Illuminate\Support\Facades\Route;
@@ -62,7 +63,7 @@ Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {
     Route::get('/paytap/store',[PaytapsPaymentController::class,'store'])->name('paytap');
     Route::get('/paytap_home',[PaytapsPaymentController::class,'callback_tap'])->name('callback_tap');
     Route::get('/return_paytap',[PaytapsPaymentController::class,'return_paytap'])->name('return_paytap');
-
+    Route::get('/', [SearchController::class, 'index']);
 });
 
 

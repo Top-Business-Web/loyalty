@@ -43,8 +43,5 @@ Route::group(['prefix' => 'client/products'],function (){
     Route::get('list/{category_id}', [ProductController::class, 'index']);
 });
 
-Route::group(['prefix' => 'client/search'],function (){
-    Route::get('/', [ProductController::class, 'index']);
-});
 
 

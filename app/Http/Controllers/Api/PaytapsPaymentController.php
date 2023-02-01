@@ -45,7 +45,7 @@ class PaytapsPaymentController extends Controller
             ->sendLanguage('en')
             ->create_pay_page();
 
-        $data['payment_url'] = $pay->getTargetUrl();
+            $data['payment_url'] = $pay->getTargetUrl();
 
          return  helperJson($data);
     }

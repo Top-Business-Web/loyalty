@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Models\User;
 use DOMDocument;
 use Illuminate\Http\Request;
 use Paytabscom\Laravel_paytabs\Facades\paypage;
@@ -62,12 +63,13 @@ class PaytapsPaymentController extends Controller
         $tran_ref =  $request->tranRef;
         $str_response =  json_encode(Paypage::queryTransaction($tran_ref));
         $transaction_response  = json_decode($str_response, true);
-        dd($transaction_response);
+        $user = User::where('phone',$transaction_response['customer_details']['phone'])->first();
+
         $payment = Payment::create([
                     'tran_ref' => $transaction_response['tran_ref'],
                     'reference_no' => $transaction_response['reference_no'],
                     'transaction_id' => $transaction_response['transaction_id'],
-                    'user_id' => $transaction_response['user_id'],
+                    'user_id' => $user->id,
                     'status' => $transaction_response['status'],
                      ]);
 

@@ -70,7 +70,7 @@ class PaytapsPaymentController extends Controller
                     'reference_no' => $transaction_response['reference_no'],
                     'transaction_id' => $transaction_response['transaction_id'],
                     'user_id' => $user->id,
-                    'status' => $transaction_response['status'],
+                    'status' => $transaction_response['success'],
                      ]);
 
         return redirect()->to('/api/callback_paytabs?status='.$payment->status);

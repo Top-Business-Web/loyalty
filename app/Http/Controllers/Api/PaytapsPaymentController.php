@@ -60,7 +60,7 @@ class PaytapsPaymentController extends Controller
     public function return_paytabs(Request $request)
     {
         $tran_ref =  $request->tranRef;
-        return dd(json_decode("'".Paypage::queryTransaction($tran_ref)."'", true));
+        return dd(json_decode(Paypage::queryTransaction($tran_ref), true));
         $transaction_response  = json_decode(Paypage::queryTransaction($tran_ref), true);
         $payment = Payment::create([
                     'tran_ref' => $transaction_response['tranRef'],

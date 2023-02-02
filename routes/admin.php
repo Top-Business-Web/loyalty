@@ -20,7 +20,7 @@ Route::get('/change-language/{locale}', function ($locale) {
 });
 
 Route::group(['prefix'=>'admin'],function (){
-    Route::get('login', [AuthController::class,'index'])->name('admin.login');
+    Route::get('login', [AuthController::class,'index'])->name('admin');
     Route::POST('login', [AuthController::class,'login'])->name('admin.login');
 });
 

@@ -52,10 +52,14 @@ class PaytapsPaymentController extends Controller
 
     public function callback_paytabs(Request $request)
     {
-
+       $tran_ref =  $request->tranRef;
+        $transaction = Paypage::queryTransaction($tran_ref);
+        return $transaction;
     }
     public function return_paytabs(Request $request)
     {
-
+        $tran_ref =  $request->tranRef;
+        $transaction = Paypage::queryTransaction($tran_ref);
+        return $transaction;
     }
 }

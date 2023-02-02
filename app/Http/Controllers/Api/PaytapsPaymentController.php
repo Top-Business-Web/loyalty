@@ -64,14 +64,19 @@ class PaytapsPaymentController extends Controller
         $str_response =  json_encode(Paypage::queryTransaction($tran_ref));
         $transaction_response  = json_decode($str_response, true);
         $user = User::where('phone',$transaction_response['customer_details']['phone'])->first();
-
+dd($transaction_response);
         $payment = Payment::create([
                     'tran_ref' => $transaction_response['tran_ref'],
                     'reference_no' => $transaction_response['reference_no'],
                     'transaction_id' => $transaction_response['transaction_id'],
                     'user_id' => $user->id,
                     'status' => $transaction_response['success'],
+                    'amount' => $transaction_response['success'],
+                    'currency' => $transaction_response['currency'],
                      ]);
+        $new_balance = $user->balance + $transaction_response['amount'];
+
+        $user->update(['balance' =>$new_balance]);
 
         return redirect()->to('/api/callback_paytabs?status='.$payment->status);
     }

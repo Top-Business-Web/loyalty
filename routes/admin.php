@@ -66,7 +66,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     Route::get('get/invoice/order/{id}',[InvoiceController::class,'getInvoice'])->name('admin.get.invoice.order');
     //////////////////////////////////////// orders //////////////////////////////////////////////
 
-    Route::get('cancelneworder','OrderController@cancelneworder')->name('admin.cancelneworder');
+    Route::get('cancelneworder',[OrderController::class,'cancelneworder'])->name('admin.cancelneworder');
 
 
     #### Auth ####

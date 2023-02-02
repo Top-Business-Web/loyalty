@@ -55,6 +55,7 @@ Route::group(['prefix' => 'provider/orders'],function (){
     Route::post('store', [OrderController::class, 'store']);
 //    Route::post('update/{id}', [ProductController::class, 'update']);
     Route::post('delete/{id}', [OrderController::class, 'destroy']);
+    Route::post('complete-ordering', [OrderController::class, 'completeOrdering']);
 });
 
 

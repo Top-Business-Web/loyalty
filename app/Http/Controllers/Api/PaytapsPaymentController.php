@@ -27,8 +27,8 @@ class PaytapsPaymentController extends Controller
         $zip = '10111';
         $ip = (isset($_SERVER['HTTP_CLIENT_IP'])) ?  $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
         $same_as_billing = uniq_id_number();
-        $callback = route('callback_tap');
-        $return = route('return_paytap');
+        $callback = url('/api/callback_paytabs');
+        $return = url('/api/return_paytabs');
 
         $language = 'en';
 //        $pay = paypage::sendPaymentCode('all')->sendTransaction($transaction_type)
@@ -50,10 +50,5 @@ class PaytapsPaymentController extends Controller
          return  helperJson($data);
     }
 
-    public function callback_tap()
-    {
-    }
-    public function return_paytap()
-    {
-    }
+
 }

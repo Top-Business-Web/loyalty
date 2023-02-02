@@ -71,8 +71,8 @@ class PaytapsPaymentController extends Controller
                     'transaction_id' => $transaction_response['transaction_id'],
                     'user_id' => $user->id,
                     'status' => $transaction_response['success'],
-                    'amount' => $transaction_response['cart_amount'],
-                    'currency' => $transaction_response['tran_currency'],
+                    'cart_amount' => $transaction_response['cart_amount'],
+                    'tran_currency' => $transaction_response['tran_currency'],
                      ]);
         $new_balance = $user->balance + $transaction_response['cart_amount'];
 

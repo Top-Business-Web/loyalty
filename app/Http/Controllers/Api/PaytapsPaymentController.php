@@ -52,10 +52,10 @@ class PaytapsPaymentController extends Controller
 
     public function callback_paytabs(Request $request)
     {
-        dd($request);
+
     }
     public function return_paytabs(Request $request)
     {
-        dd($request);
+
     }
 }

@@ -20,6 +20,8 @@ class CreatePaymentsTable extends Migration
             $table->string('transaction_id')->nullable();
             $table->string('user_id');
             $table->boolean('status');
+            $table->double('cart_amount');
+            $table->string('tran_currency')->nullable();
             $table->timestamps();
         });
     }

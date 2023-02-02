@@ -62,7 +62,7 @@ Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {
     Route::get('setting',[SettingController::class, 'index']);
     Route::get('/paytap/store',[PaytapsPaymentController::class,'store'])->name('paytap');
     Route::post('/callback_paytabs',[PaytapsPaymentController::class,'callback_paytabs']);
-    Route::post('/return_paytabs',[PaytapsPaymentController::class,'return_paytabs']);
+    Route::get('/return_paytabs',[PaytapsPaymentController::class,'return_paytabs']);
     Route::get('/search', [SearchController::class, 'index']);
 });
 

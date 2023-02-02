@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use DOMDocument;
 use Illuminate\Http\Request;
 use Paytabscom\Laravel_paytabs\Facades\paypage;
@@ -52,14 +53,22 @@ class PaytapsPaymentController extends Controller
 
     public function callback_paytabs(Request $request)
     {
-       $tran_ref =  $request->tranRef;
-        $transaction = Paypage::queryTransaction($tran_ref);
-        return $transaction;
+        return $request->status;
     }
+
+
     public function return_paytabs(Request $request)
     {
         $tran_ref =  $request->tranRef;
-        $transaction = Paypage::queryTransaction($tran_ref);
-        return $transaction;
+        $transaction_response  = json_decode(Paypage::queryTransaction($tran_ref), true);
+        $payment = Payment::create([
+                    'tran_ref' => $transaction_response['tranRef'],
+                    'reference_no' => $transaction_response['reference_no'],
+                    'transaction_id' => $transaction_response['transaction_id'],
+                    'user_id' => $transaction_response['user_id'],
+                    'status' => $transaction_response['status'],
+                     ]);
+
+        return redirect()->to('/api/callback_paytabs?status='.$payment->status);
     }
 }

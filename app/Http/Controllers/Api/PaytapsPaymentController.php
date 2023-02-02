@@ -41,7 +41,7 @@ class PaytapsPaymentController extends Controller
             ->sendCart($cart_id,$cart_amount,$cart_description)
             ->sendCustomerDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip)
             ->sendShippingDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip)
-//            ->sendURLs($return, $callback)
+            ->sendURLs($return, $callback)
             ->sendLanguage('en')
             ->create_pay_page();
 

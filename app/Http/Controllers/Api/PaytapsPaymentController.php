@@ -33,10 +33,6 @@ class PaytapsPaymentController extends Controller
         $return = url('/api/return_paytabs');
 
         $language = 'en';
-//        $pay = paypage::sendPaymentCode('all')->sendTransaction($transaction_type)
-//            ->sendCart($cart_id, $cart_amount, $cart_description)->sendCustomerDetails($name, $email, $phone, $street1, $city, $state, $country, $zip, $ip)
-//            ->sendShippingDetails($same_as_billing, $name = null, $email = null, $phone = null, $street1= null, $city = null, $state = null, $country = null, $zip = null, $ip = null)->sendHideShipping($on = false)
-//            ->sendURLs($return, $callback)->sendLanguage($language)->sendFramed($on = false)->create_pay_page(); // to initiate payment page
 
         $pay =  paypage::sendPaymentCode('all')
             ->sendTransaction($transaction_type)
@@ -44,7 +40,7 @@ class PaytapsPaymentController extends Controller
             ->sendCustomerDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip)
             ->sendShippingDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip)
             ->sendURLs($return, $callback)
-            ->sendLanguage('en')
+            ->sendLanguage($language)
             ->create_pay_page();
 
             $data['payment_url'] = $pay->getTargetUrl();

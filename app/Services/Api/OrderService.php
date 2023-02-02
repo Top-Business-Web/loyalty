@@ -80,10 +80,18 @@ class OrderService
         $inputs = request()->all();
         $client = User::where('id',$inputs['user_id'])->first();
         $order = Order::where('id',$inputs['order_id'])->first();
+        $provider = auth('user-api')->user();
+        if($client <  $order->total_price){
+            return helperJson(null, "لا يوجد رصيد كافي لدينا يرجي الشحن وإعادة المحاولة", 413);
+        }
+        if($order == 'delivered'){
+            return helperJson(null, "تم دفع قيمة الطلب من قبل بنجاح", 415);
+        }
+        // take from client
         $client->balance = $client->balance - $order->total_price;
         $client->save();
-        $provider = auth('user-api')->user();
-        $provider->balance = $provider->balance - $order->total_price;
+        // pay to provider
+        $provider->balance = $provider->balance + $order->total_price;
         $provider->save();
         $order->status = 'delivered';
         $order->save();

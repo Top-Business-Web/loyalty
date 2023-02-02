@@ -62,6 +62,7 @@ class PaytapsPaymentController extends Controller
         $tran_ref =  $request->tranRef;
         $str_response =  json_encode(Paypage::queryTransaction($tran_ref));
         $transaction_response  = json_decode($str_response, true);
+        dd($transaction_response);
         $payment = Payment::create([
                     'tran_ref' => $transaction_response['tranRef'],
                     'reference_no' => $transaction_response['reference_no'],

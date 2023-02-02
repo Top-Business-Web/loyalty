@@ -50,10 +50,12 @@ class PaytapsPaymentController extends Controller
          return  helperJson($data);
     }
 
-    public function callback_paytabs()
+    public function callback_paytabs(Request $request)
     {
+        dd($request);
     }
-    public function return_paytabs()
+    public function return_paytabs(Request $request)
     {
+        dd($request);
     }
 }

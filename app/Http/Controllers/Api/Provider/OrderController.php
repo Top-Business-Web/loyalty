@@ -26,4 +26,8 @@ class OrderController extends Controller
     public function store(request $request){
         return $this->orderService->store($request);
     }
+
+    public function completeOrdering(request $request){
+        return $this->complete_and_charge->store($request);
+    }
 }

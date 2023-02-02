@@ -54,4 +54,40 @@ class OrderService
         return helperJson(new OrderResource($order), 'تمت الاضافة بنجاح');
     }
 
+
+    public function complete_and_charge($request){
+        $rules = [
+            'user_id' => 'required|exists:users,id',
+            'order_id' => 'required|exists:orders,id',
+        ];
+        $validator = Validator::make($request->all(), $rules, [
+            'user_id.exists' => 411,
+            'order_id.exists' => 417,
+        ]);
+        if ($validator->fails()) {
+            $errors = collect($validator->errors())->flatten(1)[0];
+            if (is_numeric($errors)) {
+                $errors_arr = [
+                    411 => 'Failed,user not exists',
+                    417 => 'Failed,order not exists',
+                ];
+                $code = (int)collect($validator->errors())->flatten(1)[0];
+                return helperJson(null, isset($errors_arr[$errors]) ? $errors_arr[$errors] : 500, $code);
+            }
+            return response()->json(['data' => null, 'message' => $validator->errors(), 'code' => 422], 200);
+        }
+        $request->validate($rules);
+        $inputs = request()->all();
+        $client = User::where('id',$inputs['user_id'])->first();
+        $order = Order::where('id',$inputs['order_id'])->first();
+        $client->balance = $client->balance - $order->total_price;
+        $client->save();
+        $provider = auth('user-api')->user();
+        $provider->balance = $provider->balance - $order->total_price;
+        $provider->save();
+        $order->status = 'delivered';
+        $order->save();
+        return helperJson($order, 'تم عملية الدفع بنجاح');
+    }
+
 }

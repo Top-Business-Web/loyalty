@@ -37,7 +37,8 @@ class PaytapsPaymentController extends Controller
         $pay =  paypage::sendPaymentCode('all')
             ->sendTransaction($transaction_type)
             ->sendCart($cart_id,$cart_amount,$cart_description)
-            ->sendCustomerDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip)
+            ->sendCustomerDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip, $user_id = $user->id)
+            ->sendCustomerDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip, $user_id = $user->id)
             ->sendShippingDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip)
             ->sendURLs($return, $callback)
             ->sendLanguage($language)
@@ -58,6 +59,7 @@ class PaytapsPaymentController extends Controller
     {
         $tran_ref =  $request->tranRef;
         $str_response =  json_encode(Paypage::queryTransaction($tran_ref));
+        dd($str_response);
         $transaction_response  = json_decode($str_response, true);
         $user = User::where('phone',$transaction_response['customer_details']['phone'])->first();
         $payment = Payment::create([

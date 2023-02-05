@@ -38,7 +38,6 @@ class PaytapsPaymentController extends Controller
             ->sendTransaction($transaction_type)
             ->sendCart($cart_id,$cart_amount,$cart_description)
             ->sendCustomerDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip, $user_id = $user->id)
-            ->sendCustomerDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip, $user_id = $user->id)
             ->sendShippingDetails($name, $email, $phone, 'street', 'Nasr City', 'Cairo', 'EG', '1234',$ip)
             ->sendURLs($return, $callback)
             ->sendLanguage($language)

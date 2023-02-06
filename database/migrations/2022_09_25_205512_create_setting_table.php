@@ -21,6 +21,8 @@ class CreateSettingTable extends Migration
             $table->text('terms_en');
             $table->text('privacy_ar');
             $table->text('privacy_en');
+            $table->text('instagram');
+            $table->text('whatsapp');
             $table->timestamps();
         });
     }

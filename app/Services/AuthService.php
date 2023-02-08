@@ -198,4 +198,33 @@ class AuthService
 
        return helperJson(new UserResources($user), '');
     }
+
+    public function profileWithPhone($request)
+    {
+        $rules = [
+            'phone' => 'required|exists:users,phone',
+        ];
+        $validator = Validator::make($request->all(), $rules, [
+            'phone.exists' => 411,
+        ]);
+        if ($validator->fails()) {
+            $errors = collect($validator->errors())->flatten(1)[0];
+            if (is_numeric($errors)) {
+                $errors_arr = [
+                    411 => 'Failed,phone not exists',
+                ];
+                $code = (int)collect($validator->errors())->flatten(1)[0];
+                return helperJson(null, isset($errors_arr[$errors]) ? $errors_arr[$errors] : 500, $code);
+            }
+            return response()->json(['data' => null, 'message' => $validator->errors(), 'code' => 422], 200);
+        }
+        $data = $request->validate($rules);
+
+        $user = User::where('phone',$data['phone']);
+        $user = $user->firstOrFail();
+        $token = JWTAuth::fromUser($user);
+        $user->token = $token;
+
+        return helperJson(new UserResources($user), 'User Profile Data');
+    }//end fun
 }

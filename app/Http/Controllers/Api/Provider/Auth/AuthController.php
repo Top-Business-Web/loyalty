@@ -144,4 +144,15 @@ class AuthController extends Controller
         return $this->authService->profile($request);
 
     }
+
+    /**
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function profileWithPhone(Request $request)
+    {
+        return $this->authService->profileWithPhone($request);
+
+    }
 }//end class

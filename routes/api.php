@@ -32,6 +32,7 @@ Route::group(['prefix' => 'provider/auth'],function (){
     Route::POST('update-profile',[AuthController::class, 'update_profile']);
     Route::POST('delete-account',[AuthController::class, 'deleteAccount']);
     Route::get('my-profile',[AuthController::class, 'me']);
+    Route::get('profile-by-phone',[AuthController::class, 'profileWithPhone']);
 //    Route::post('insert-token',[NotificationController::class, 'insert_token']);
 });
 Route::group(['prefix' => 'provider/categories'],function (){

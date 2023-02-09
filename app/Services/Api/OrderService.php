@@ -100,18 +100,15 @@ class OrderService
 
     public function cancel_and_charge($request){
         $rules = [
-            'user_id' => 'required|exists:users,id',
             'order_id' => 'required|exists:orders,id',
         ];
         $validator = Validator::make($request->all(), $rules, [
-            'user_id.exists' => 411,
             'order_id.exists' => 417,
         ]);
         if ($validator->fails()) {
             $errors = collect($validator->errors())->flatten(1)[0];
             if (is_numeric($errors)) {
                 $errors_arr = [
-                    411 => 'Failed,user not exists',
                     417 => 'Failed,order not exists',
                 ];
                 $code = (int)collect($validator->errors())->flatten(1)[0];

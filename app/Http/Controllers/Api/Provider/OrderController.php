@@ -30,4 +30,8 @@ class OrderController extends Controller
     public function completeOrdering(request $request){
         return $this->orderService->complete_and_charge($request);
     }
+
+    public function cancelOrder(request $request){
+        return $this->orderService->cancel_and_charge($request);
+    }
 }

@@ -15,7 +15,7 @@ class ProviderController extends Controller
      */
     public function __construct(ProviderService $providerService)
     {
-        $this->middleware('auth_jwt');
+//        $this->middleware('auth_jwt');
         $this->providerService = $providerService;
     }
 

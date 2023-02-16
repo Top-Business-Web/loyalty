@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function __construct(ProductService $productService)
     {
-        $this->middleware('auth_jwt');
+//        $this->middleware('auth_jwt');
         $this->productService = $productService;
     }
 

@@ -15,7 +15,7 @@ class ProductService
 {
     use DefaultImage,GeneralTrait;
     public function productsByCategoryId($request,$id){
-        $user = auth()->user();
+//        $user = auth()->user();
         $products = Product::where('category_id', $id)->get();
 
         return helperJson(ProductResource::collection($products), '');

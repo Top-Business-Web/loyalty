@@ -34,6 +34,12 @@ class UserController extends Controller
                     else
                         return '<span class="badge badge-danger">لا يوجد نقاط</span>';
                 })
+                ->editColumn('user_type', function ($user) {
+                    if($user->role_id == 1)
+                        return '<span class="badge badge-info">مقدم خدمات</span>' ;
+                    else
+                        return '<span class="badge badge-info">عميل</span>';
+                })
                 ->editColumn('email', function ($user) {
                         return '<a href="mailto:'.$user->email.'">'.$user->email.'</a>';
                 })

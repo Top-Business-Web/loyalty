@@ -21,8 +21,9 @@ class UserController extends Controller
             return Datatables::of($user)
                 ->addColumn('action', function ($user) {
                     return '
+                            <button type="button" data-id="' . $user->id . '" class="btn btn-pill btn-info-light editBtn"><i class="fa fa-edit"></i></button>
                             <button class="btn btn-pill btn-danger-light" data-toggle="modal" data-target="#delete_modal"
-                                    data-id="' . $user->id . '" data-title="' . $user->user_name . '">
+                                    data-id="' . $user->id . '" data-title="' . $user->name . '">
                                     <i class="fas fa-trash"></i>
                             </button>
                        ';
@@ -60,7 +61,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $valiadate = $request->validate([
-           'user_name'     => 'required',
+           'name'     => 'required',
            'password' => 'required|min:6',
         ],[
             'user_name.required' => 'يرجي ادخال اسم المستخدم'
@@ -103,7 +104,7 @@ class UserController extends Controller
             if (file_exists($user->getAttributes()['image'])) {
                 unlink($user->getAttributes()['image']);
             }
-            $data['image'] = $this->saveImage($request->image,'assets/uploads/users');
+            $data['image'] = $this->saveImage($request->image,'assets/uploads/users','photo');
         }
 
         $user->update($data);

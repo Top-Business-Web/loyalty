@@ -90,7 +90,7 @@
         var columns = [
             {data: 'id', name: 'id'},
             {data: 'image', name: 'image'},
-            {data: 'user_name', name: 'user_name'},
+            {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'balance', name: 'balance'},
             {data: 'action', name: 'action', orderable: false, searchable: false},

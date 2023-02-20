@@ -152,6 +152,17 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'tailflow/laravel-orion' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Orion\\OrionServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Orion' => 'Orion\\Facades\\Orion',
+    ),
+  ),
   'tymon/jwt-auth' => 
   array (
     'aliases' => 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\Provider\Auth\AuthController;
 use App\Http\Controllers\Api\Provider\Auth\CodeCheckController;
 use App\Http\Controllers\Api\Provider\Auth\ForgotPasswordController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Api\Provider\SearchController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\PaytapsPaymentController;
 use Illuminate\Support\Facades\Route;
+use Orion\Facades\Orion;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,8 @@ Route::group(['prefix' => 'provider/orders'],function (){
     Route::post('cancel-order', [OrderController::class, 'cancelOrder']);
 
 });
+
+Orion::resource('products-api', ProductsController::class);
 
 
 Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {

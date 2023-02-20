@@ -122,6 +122,11 @@
         'driver' => 'jwt',
         'provider' => 'users',
       ),
+      'api' => 
+      array (
+        'driver' => 'jwt',
+        'provider' => 'users',
+      ),
       'sanctum' => 
       array (
         'driver' => 'sanctum',
@@ -662,6 +667,60 @@
         0 => 'D:\\xampp\\htdocs\\loyalty\\resources\\views/vendor/mail',
       ),
     ),
+  ),
+  'orion' => 
+  array (
+    'namespaces' => 
+    array (
+      'models' => 'App\\Models\\',
+      'controllers' => 'App\\Http\\Controllers\\',
+    ),
+    'auth' => 
+    array (
+      'guard' => 'api',
+    ),
+    'specs' => 
+    array (
+      'info' => 
+      array (
+        'title' => 'Laravel',
+        'description' => NULL,
+        'terms_of_service' => NULL,
+        'contact' => 
+        array (
+          'name' => NULL,
+          'url' => NULL,
+          'email' => NULL,
+        ),
+        'license' => 
+        array (
+          'name' => NULL,
+          'url' => NULL,
+        ),
+        'version' => '1.0.0',
+      ),
+      'servers' => 
+      array (
+        0 => 
+        array (
+          'url' => 'http://localhost/api',
+          'description' => 'Default Environment',
+        ),
+      ),
+      'tags' => 
+      array (
+      ),
+    ),
+    'transactions' => 
+    array (
+      'enabled' => false,
+    ),
+    'search' => 
+    array (
+      'case_sensitive' => true,
+      'max_nested_depth' => 1,
+    ),
+    'use_validated' => false,
   ),
   'paytabs' => 
   array (

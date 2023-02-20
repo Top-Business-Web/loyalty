@@ -14,7 +14,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="btn_title_ar" class="form-control-label">اسم المستخدم</label>
-                <input type="text" class="form-control" name="user_name" value="{{$user->user_name}}">
+                <input type="text" class="form-control" name="name" value="{{$user->name}}">
             </div>
         </div>
         <div class="col-6">

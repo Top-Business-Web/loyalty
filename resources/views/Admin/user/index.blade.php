@@ -25,6 +25,7 @@
                                 <th>اسم المسخدم</th>
                                 <th>الايميل</th>
                                 <th>الرصيد</th>
+                                <th>نوع المستخدم</th>
                                 <th class="rounded-end">العمليات</th>
                             </tr>
                             </thead>
@@ -93,6 +94,7 @@
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'balance', name: 'balance'},
+            {data: 'user_type', name: 'user_type'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
         showData('{{route('users.index')}}', columns);

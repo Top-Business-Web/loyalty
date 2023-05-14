@@ -39,6 +39,11 @@ Route::group(['prefix' => 'client'],function (){
     Route::get('providers/list', [ProviderController::class, 'index']);
     Route::get('home', [HomeController::class, 'index']);
 
+});
+
+Route::group(['prefix' => 'client'],function (){
+
+    Route::post('add-rate', [HomeController::class, 'add_rate']);
 
 });
 

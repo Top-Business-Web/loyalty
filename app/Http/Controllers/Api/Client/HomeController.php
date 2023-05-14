@@ -23,4 +23,14 @@ class HomeController extends Controller
     public function index(Request $request){
         return $this->homeService->index($request);
     }
+
+
+    public function search(Request $request){
+        return $this->homeService->search($request);
+    }
+
+
+    public function add_rate(Request $request){
+        return $this->homeService->add_rate($request);
+    }
 }

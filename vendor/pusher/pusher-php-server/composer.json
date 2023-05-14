@@ -5,12 +5,10 @@
     "license": "MIT",
     "require": {
         "php": "^5.4 || ^7.0",
-        "ext-curl": "*",
-        "psr/log": "^1.0",
-        "paragonie/sodium_compat": "^1.6"
+        "ext-curl": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8.35 || ^5.7"
+        "phpunit/phpunit": "^4.8 || ^5.7"
     },
     "autoload": {
         "psr-4": {

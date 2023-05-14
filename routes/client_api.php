@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Client\Auth\AuthController;
 use App\Http\Controllers\Api\Client\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Client\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Client\CategoryController;
+use App\Http\Controllers\Api\Client\HomeController;
 use App\Http\Controllers\Api\Client\ProductController;
 use App\Http\Controllers\Api\Client\ProviderController;
 use App\Http\Controllers\Api\Client\ContactController;
@@ -34,10 +35,13 @@ Route::group(['prefix' => 'client/auth'],function (){
 
 //    Route::post('insert-token',[NotificationController::class, 'insert_token']);
 });
-Route::group(['prefix' => 'client/providers'],function (){
-    Route::get('list', [ProviderController::class, 'index']);
+Route::group(['prefix' => 'client'],function (){
+    Route::get('providers/list', [ProviderController::class, 'index']);
+    Route::get('home', [HomeController::class, 'index']);
+
 
 });
+
 
 Route::group(['prefix' => 'client/products'],function (){
     Route::get('list/{category_id}', [ProductController::class, 'index']);

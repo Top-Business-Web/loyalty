@@ -26,9 +26,9 @@
                             <tr class="fw-bolder text-muted bg-light">
                                 <th class="min-w-25px">#</th>
                                 <th class="min-w-50px">الصورة</th>
-                                <th class="min-w-50px">المحتوي (ar)</th>
-                                <th class="min-w-50px">المحتوي (en)</th>
-                                <th class="min-w-125px">الزر</th>
+{{--                                <th class="min-w-50px">المحتوي (ar)</th>--}}
+{{--                                <th class="min-w-50px">المحتوي (en)</th>--}}
+{{--                                <th class="min-w-125px">الزر</th>--}}
 {{--                                <th class="min-w-125px">رابط الزر</th>--}}
                                 <th class="min-w-50px rounded-end">العمليات</th>
                             </tr>
@@ -91,10 +91,10 @@
         var columns = [
             {data: 'id', name: 'id'},
             {data: 'image', name: 'image'},
-            {data: 'desc_ar', name: 'desc_ar'},
-            {data: 'desc_en', name: 'desc_en'},
-            {data: 'btn_title', name: 'btn_title'},
-            // {data: 'btn_link', name: 'btn_link'},
+            // {data: 'desc_ar', name: 'desc_ar'},
+            // {data: 'desc_en', name: 'desc_en'},
+            // {data: 'btn_title', name: 'btn_title'},
+            // // {data: 'btn_link', name: 'btn_link'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
         showData('{{route('sliders.index')}}', columns);

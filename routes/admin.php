@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SliderAdminController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     Route::get('/', function () {
         return view('Admin/index');
     })->name('adminHome');
-
+    #### Sliders ####
+    Route::resource('sliders', SliderAdminController::class);
+    Route::POST('slider.delete', [SliderAdminController::class,'delete'])->name('sliders.delete');
     #### Admins ####
     Route::resource('admins',AdminController::class);
     Route::POST('delete_admin',[AdminController::class,'delete'])->name('delete_admin');

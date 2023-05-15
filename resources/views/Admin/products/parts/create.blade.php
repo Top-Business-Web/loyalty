@@ -43,6 +43,13 @@
             <label for="price" class="form-control-label">السعر بعد الخصم</label>
             <input type="number"  class="form-control" name="price_after_discount" id="price_after_discount">
         </div>
+        <div class="col-12">
+            <div class="form-group row">
+                <input type="hidden" name="the_best" value="0" />
+                <input type="checkbox" class="form-control col-2" name="the_best" value="1"  placeholder="******">
+                <label for="btn_link" class="form-control-label col-10">وضع كمفضل</label>
+            </div>
+        </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
             <button type="submit" class="btn btn-primary" id="addButton">اضافة</button>

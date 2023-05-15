@@ -53,7 +53,15 @@ class HomeService
         $user = Auth::guard('api')->user();
         $inputs = request()->all();
         $inputs['client_id'] = $user->id;
-        $rate = Rate::create($inputs);
+        $rate = Rate::where(['client_id'=>$user->id,'provider_id'=>$inputs['provider_id']]);
+        if($rate->count()){
+            $rate = $rate->first();
+            $rate->value = $inputs['provider_id'];
+            $rate->comment = $inputs['comment'];
+            $rate->save();
+        }else {
+            $rate = Rate::create($inputs);
+        }
         return helperJson($rate, 'تم التقيم بنجاح');
     }
 

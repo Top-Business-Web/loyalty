@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Api\Provider;
 
 use App\Http\Controllers\Controller;
+use App\Services\Api\ClientOrderService;
 use Illuminate\Http\Request;
 use App\Services\Api\OrderService;
 
-class OrderController extends Controller
+class ClientOrderController extends Controller
 {
-    private OrderService $orderService;
+    private ClientOrderService $orderService;
 
     /**
      * @param OrderService $orderService
      */
-    public function __construct(OrderService $orderService)
+    public function __construct(ClientOrderService $orderService)
     {
         $this->middleware('auth_jwt');
         $this->orderService = $orderService;

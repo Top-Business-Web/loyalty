@@ -8,12 +8,12 @@ use App\Models\Order;
 use App\Http\Resources\OrderResource;
 use App\Traits\GeneralTrait;
 
-class OrderService
+class ClientOrderService
 {
     use GeneralTrait;
     public function list(){
         $provider = auth('user-api')->user();
-        $orders = Order::where('provider_id', $provider->id)->where('status' , '!=','rejected')->get();
+        $orders = Order::where('user_id', $provider->id)->where('status' , '!=','rejected')->get();
 //        dd(OrderResource::collection($orders));
         return helperJson(OrderResource::collection($orders), '');
     }
@@ -40,10 +40,9 @@ class OrderService
         }
         $request->validate($rules);
         $inputs = request()->all();
-        $client = User::where('phone',$inputs['phone'])->first();
-        $data['user_id'] = $client->id;
-//        dd(auth('user-api')->user()->id);
-        $data['provider_id'] = auth('user-api')->user()->id;
+        $provider = User::where('phone',$inputs['phone'])->first();
+        $data['provider_id'] = $provider->id;
+        $data['user_id'] = auth('user-api')->user()->id;
         $data['total_price'] = $inputs['total_price'];
         if(isset($inputs['note'])) {
             $data['note'] = $inputs['note'];
@@ -57,11 +56,11 @@ class OrderService
 
     public function complete_and_charge($request){
         $rules = [
-            'user_id' => 'required|exists:users,id',
+            'provider_id' => 'required|exists:users,id',
             'order_id' => 'required|exists:orders,id',
         ];
         $validator = Validator::make($request->all(), $rules, [
-            'user_id.exists' => 411,
+            'provider_id.exists' => 411,
             'order_id.exists' => 417,
         ]);
         if ($validator->fails()) {
@@ -78,9 +77,9 @@ class OrderService
         }
         $request->validate($rules);
         $inputs = request()->all();
-        $client = User::where('id',$inputs['user_id'])->first();
+        $provider = User::where('id',$inputs['provider_id'])->first();
         $order = Order::where('id',$inputs['order_id'])->first();
-        $provider = auth('user-api')->user();
+        $client = auth('user-api')->user();
         if($client->balance <  $order->total_price){
             return helperJson(null, "لا يوجد رصيد كافي لدينا يرجي الشحن وإعادة المحاولة", 413);
         }

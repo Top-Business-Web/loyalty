@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Client\HomeController;
 use App\Http\Controllers\Api\Client\ProductController;
 use App\Http\Controllers\Api\Client\ProviderController;
 use App\Http\Controllers\Api\Client\ContactController;
+use App\Http\Controllers\Api\Provider\ClientOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,16 @@ Route::group(['prefix' => 'client'],function (){
     Route::get('providers/list', [ProviderController::class, 'index']);
     Route::get('home', [HomeController::class, 'index']);
     Route::get('search', [HomeController::class, 'search']);
+
+});
+
+Route::group(['prefix' => 'client/orders'],function (){
+    Route::get('list', [ClientOrderController::class, 'index']);
+    Route::post('store', [ClientOrderController::class, 'store']);
+//    Route::post('update/{id}', [ProductController::class, 'update']);
+    Route::post('delete/{id}', [ClientOrderController::class, 'destroy']);
+    Route::post('complete-ordering', [ClientOrderController::class, 'completeOrdering']);
+    Route::post('cancel-order', [ClientOrderController::class, 'cancelOrder']);
 
 });
 

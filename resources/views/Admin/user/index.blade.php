@@ -4,6 +4,13 @@
 @endsection
 @section('page_name') المستخدمين @endsection
 @section('content')
+
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <div class="card">
@@ -26,6 +33,7 @@
                                 <th>الايميل</th>
                                 <th>الرصيد</th>
                                 <th>نوع المستخدم</th>
+                                <th>التقيم</th>
                                 <th class="rounded-end">العمليات</th>
                             </tr>
                             </thead>
@@ -95,6 +103,7 @@
             {data: 'email', name: 'email'},
             {data: 'balance', name: 'balance'},
             {data: 'user_type', name: 'user_type'},
+            {data: 'rate', name: 'rate'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
         showData('{{route('users.index')}}', columns);

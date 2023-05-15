@@ -36,6 +36,16 @@
                 <input type="password" class="form-control" name="password" placeholder="******">
             </div>
         </div>
+
+        @if($user->role_id == 1)
+        <div class="col-12">
+            <div class="form-group row">
+                <input type="hidden" name="is_best" value="0" />
+                <input type="checkbox" class="form-control col-2" name="is_best" value="1" {{($user->is_best == 1)? "checked":  ''}} placeholder="******">
+                <label for="btn_link" class="form-control-label col-10">وضع كمفضل</label>
+            </div>
+        </div>
+            @endif
     </div>
 
     <div class="modal-footer">

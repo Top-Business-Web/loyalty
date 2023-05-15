@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rate;
 use App\Models\Service;
 use App\Models\User;
 use App\Traits\PhotoTrait;
@@ -42,6 +43,19 @@ class UserController extends Controller
                 })
                 ->editColumn('email', function ($user) {
                         return '<a href="mailto:'.$user->email.'">'.$user->email.'</a>';
+                })
+            ->addColumn('rate', function ($user) {
+                $rate = round(Rate::where('provider_id',$user->id)->avg('value'),1);
+                $stars ="";
+                        for($i=1;$i<6;$i++){
+                            if($rate > $i){
+                                $stars .=' <span class="fa fa-star checked"></span>';
+                            }else{
+                                $stars .=' <span class="fa fa-star"></span>';
+                            }
+
+                        }
+                        return $stars;
                 })
 
                 ->editColumn('image', function ($user) {

@@ -39,6 +39,10 @@
             <label for="price" class="form-control-label">{{__('admin.price')}}</label>
             <input type="number" class="form-control" name="price" id="price">
         </div>
+        <div class="form-group">
+            <label for="price" class="form-control-label">السعر بعد الخصم</label>
+            <input type="number"  class="form-control" name="price_after_discount" id="price_after_discount">
+        </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
             <button type="submit" class="btn btn-primary" id="addButton">اضافة</button>

@@ -16,6 +16,13 @@
                 <span class="side-menu__label">الرئيسية</span>
             </a>
         </li>
+
+        <li class="slide">
+            <a class="side-menu__item" href="{{route('sliders.index')}}">
+                <i class="icon icon-home side-menu__icon"></i>
+                <span class="side-menu__label">الصور المتحركة</span>
+            </a>
+        </li>
         <li class="slide">
             <a class="side-menu__item" href="{{route('admins.index')}}">
                 <i class="fe fe-users side-menu__icon"></i>

@@ -3,8 +3,10 @@
 namespace App\Services\Api\Client;
 
 use App\Http\Resources\Client\ProvidersResource;
+use App\Http\Resources\ProductResource;
 use App\Http\Resources\SliderResource;;
 
+use App\Models\Product;
 use App\Models\Rate;
 use App\Models\Slider;
 use App\Models\User;
@@ -29,14 +31,14 @@ class HomeService
     }
 
     public function search($request){
-        $user = auth()->user();
-        $providers = User::where('role_id', 1)->get();
-        $is_best_providers = User::where(['role_id'=> 1, 'is_best' => '1'])->get();
-        $data['the_best_provider'] = ProvidersResource::collection($is_best_providers);
-        $data['providers'] = ProvidersResource::collection($providers);
-        $data['products'] = SliderResource::collection(Slider::all());
-
-        return helperJson($data, '');
+        $search_key = $request->search_key;
+//        dd($request->provider_id);
+        $products = Product::where('user_id',$request->provider_id)
+            ->where(function ($query) use ($search_key) {
+                $query->where('name_ar', 'LIKE', '%'.$search_key.'%')
+                    ->orWhere('name_en', 'LIKE', '%'.$search_key.'%');
+            })->get();
+        return helperJson(ProductResource::collection($products), '',200);
     }
 
     // add rate to Provider

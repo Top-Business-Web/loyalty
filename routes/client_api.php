@@ -38,6 +38,7 @@ Route::group(['prefix' => 'client/auth'],function (){
 Route::group(['prefix' => 'client'],function (){
     Route::get('providers/list', [ProviderController::class, 'index']);
     Route::get('home', [HomeController::class, 'index']);
+    Route::get('search', [HomeController::class, 'search']);
 
 });
 

@@ -25,6 +25,7 @@ class ProductService
             'name_ar' => 'required|min:2|max:191',
             'name_en' => 'required|min:2|max:191',
             'price' => 'required',
+            'price_after_discount' => 'nullable',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable',
         ];
@@ -56,6 +57,7 @@ class ProductService
             'name_ar' => 'required|min:2|max:191',
             'name_en' => 'required|min:2|max:191',
             'price' => 'required',
+            'price_after_discount' => 'nullable',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable',
         ];

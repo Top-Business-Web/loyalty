@@ -18,6 +18,7 @@ class ProductResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->{"name_".accept_language()},
             'price'=>$this->price,
+            'price_after_discount'=> $this->price_after_discount,
             'image'=>$this->image,
         ];
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Provider;
+namespace App\Http\Controllers\Api\Client;
 
 use App\Http\Controllers\Controller;
 use App\Services\Api\ClientOrderService;

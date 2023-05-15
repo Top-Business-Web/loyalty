@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\Client\HomeController;
 use App\Http\Controllers\Api\Client\ProductController;
 use App\Http\Controllers\Api\Client\ProviderController;
 use App\Http\Controllers\Api\Client\ContactController;
-use App\Http\Controllers\Api\Provider\ClientOrderController;
+use App\Http\Controllers\Api\Client\ClientOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*

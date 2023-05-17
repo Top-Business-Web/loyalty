@@ -16,7 +16,7 @@ class ClientOrderService
         $data['new'] = OrderResource::collection(Order::where('user_id', $provider->id)->where('status' , '==','new')->get());
         $data['accepted'] = OrderResource::collection(Order::where('user_id', $provider->id)->where('status' , '==','accepted')->get());
 //        dd(OrderResource::collection($orders));
-        return helperJson(OrderResource::collection($data), '');
+        return helperJson($data, '');
     }
 
     public function store($request){

@@ -12,7 +12,8 @@ class OrderService
 {
     use GeneralTrait;
     public function list(){
-        $provider = auth('user-api')->user();
+        $provider = auth()->user();
+//        dd($provider);
         $orders = Order::where('provider_id', $provider->id)->where('status','new')->get();
 //        dd(OrderResource::collection($orders));
         return helperJson(OrderResource::collection($orders), '');
@@ -43,7 +44,7 @@ class OrderService
         $client = User::where('phone',$inputs['phone'])->first();
         $data['user_id'] = $client->id;
 //        dd(auth('user-api')->user()->id);
-        $data['provider_id'] = auth('user-api')->user()->id;
+        $data['provider_id'] = auth()->user()->id;
         $data['total_price'] = $inputs['total_price'];
         if(isset($inputs['note'])) {
             $data['note'] = $inputs['note'];

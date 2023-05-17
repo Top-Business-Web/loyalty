@@ -13,8 +13,8 @@ class ClientOrderService
     use GeneralTrait;
     public function list(){
         $provider = auth('user-api')->user();
-        $data['new'] = OrderResource::collection(Order::where('provider_id', $provider->id)->where('status' , '==','new')->get());
-        $data['accepted'] = OrderResource::collection(Order::where('provider_id', $provider->id)->where('status' , '==','accepted')->get());
+        $data['new'] = OrderResource::collection(Order::where('provider_id', $provider->id)->where('status' ,'new')->get());
+        $data['accepted'] = OrderResource::collection(Order::where('provider_id', $provider->id)->where('status' ,'accepted')->get());
 //        dd(OrderResource::collection($orders));
         return helperJson($data, '');
     }

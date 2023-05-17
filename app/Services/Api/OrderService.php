@@ -13,7 +13,7 @@ class OrderService
     use GeneralTrait;
     public function list(){
         $provider = auth('user-api')->user();
-        $orders = Order::where('provider_id', $provider->id)->where('status' , '!=','rejected')->get();
+        $orders = Order::where('provider_id', $provider->id)->where('status' , '==','new')->get();
 //        dd(OrderResource::collection($orders));
         return helperJson(OrderResource::collection($orders), '');
     }

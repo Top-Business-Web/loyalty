@@ -22,7 +22,8 @@ class OrderResource extends JsonResource
             'id'=>$this->id,
             'total_price'=>$this->total_price,
             'note'=>$this->note,
-            'user_data'=> User::select('name','phone')->find($this->user->id),
+            'user_data'=> User::select('id','name','phone_code','phone')->find($this->user->id),
+            'provider_data'=> User::select('id','name','phone_code','phone')->find($this->provider->id),
             'order_details'=> OrderDetailsResource::collection($this->details),
             'data_time'=> $this->created_at->format('d/m/Y h:m'),
         ];

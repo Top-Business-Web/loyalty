@@ -85,7 +85,7 @@ class OrderService
         if($client->balance <  $order->total_price){
             return helperJson(null, "لا يوجد رصيد كافي لدينا يرجي الشحن وإعادة المحاولة", 413);
         }
-        if($order->status == 'delivered'){
+        if($order->status == 'accepted'){
             return helperJson(null, "تم دفع قيمة الطلب من قبل بنجاح", 415);
         }
         // take from client
@@ -94,7 +94,7 @@ class OrderService
         // pay to provider
         $provider->balance = $provider->balance + $order->total_price;
         $provider->save();
-        $order->status = 'delivered';
+        $order->status = 'accepted';
         $order->save();
         return helperJson($order, 'تم عملية الدفع بنجاح');
     }

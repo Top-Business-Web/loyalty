@@ -112,7 +112,7 @@ class AuthService
     public function update_profile($request){
         $user = Auth()->user();
         $validator = Validator::make($request->all(), [
-            'phone'      => 'required|unique:users,phone,'.$user->id,
+//            'phone'      => 'required|unique:users,phone,'.$user->id,
 //            'password'   => 'nullable',
         ]);
         if ($validator->fails()) {
@@ -136,7 +136,7 @@ class AuthService
             return $this->returnValidationError($code, $validator,400);
         }
 
-        $data = $request->all();
+        $data = $request->except(['phone']);
 
         if($request->hasFile('image')){
             $data['image'] = $this->uploadFiles('users', $request->file('image'));

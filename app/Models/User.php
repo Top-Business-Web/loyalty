@@ -16,6 +16,8 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
+    protected $casts = ['advantages_ar','advantages_en'];
+
 
     ##  Mutators and Accessors
     public function getImageAttribute()

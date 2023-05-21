@@ -251,10 +251,10 @@ class ComposerStaticInitebadef4a2fe32872459d1dcc93c1fe4b
         'Yajra\\DataTables\\' => 
         array (
             0 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
-            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
-            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
-            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
+            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
+            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
+            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -454,8 +454,8 @@ class ComposerStaticInitebadef4a2fe32872459d1dcc93c1fe4b
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -800,6 +800,7 @@ class ComposerStaticInitebadef4a2fe32872459d1dcc93c1fe4b
         'App\\Http\\Controllers\\Api\\Client\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Client/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Api\\Client\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Client/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Api\\Client\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Client/CategoryController.php',
+        'App\\Http\\Controllers\\Api\\Client\\ClientOrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Client/ClientOrderController.php',
         'App\\Http\\Controllers\\Api\\Client\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Client/ContactController.php',
         'App\\Http\\Controllers\\Api\\Client\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Client/HomeController.php',
         'App\\Http\\Controllers\\Api\\Client\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Client/ProductController.php',
@@ -862,6 +863,7 @@ class ComposerStaticInitebadef4a2fe32872459d1dcc93c1fe4b
         'App\\Models\\ContactUs' => __DIR__ . '/../..' . '/app/Models/ContactUs.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
         'App\\Models\\OrderDetails' => __DIR__ . '/../..' . '/app/Models/OrderDetails.php',
+        'App\\Models\\Package' => __DIR__ . '/../..' . '/app/Models/Package.php',
         'App\\Models\\Payment' => __DIR__ . '/../..' . '/app/Models/Payment.php',
         'App\\Models\\Privacy' => __DIR__ . '/../..' . '/app/Models/Privacy.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
@@ -878,6 +880,7 @@ class ComposerStaticInitebadef4a2fe32872459d1dcc93c1fe4b
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Services\\Admin\\ProductService' => __DIR__ . '/../..' . '/app/Services/Admin/ProductService.php',
+        'App\\Services\\Api\\ClientOrderService' => __DIR__ . '/../..' . '/app/Services/Api/ClientOrderService.php',
         'App\\Services\\Api\\Client\\AuthService' => __DIR__ . '/../..' . '/app/Services/Api/Client/AuthService.php',
         'App\\Services\\Api\\Client\\CategoryService' => __DIR__ . '/../..' . '/app/Services/Api/Client/CategoryService.php',
         'App\\Services\\Api\\Client\\HomeService' => __DIR__ . '/../..' . '/app/Services/Api/Client/HomeService.php',

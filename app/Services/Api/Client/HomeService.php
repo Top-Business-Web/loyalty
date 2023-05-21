@@ -6,6 +6,7 @@ use App\Http\Resources\Client\ProvidersResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\SliderResource;;
 
+use App\Models\Package;
 use App\Models\Product;
 use App\Models\Rate;
 use App\Models\Slider;
@@ -26,6 +27,13 @@ class HomeService
         $data['the_best_provider'] = ProvidersResource::collection($is_best_providers);
         $data['providers'] = ProvidersResource::collection($providers);
         $data['sliders'] = SliderResource::collection(Slider::all());
+
+        return helperJson($data, '');
+    }
+
+    public function packages(){
+
+        $data['sliders'] = Package::select('id','price','title','description')->get();
 
         return helperJson($data, '');
     }

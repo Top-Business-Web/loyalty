@@ -16,7 +16,7 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
-    protected $casts = ['advantages_ar','advantages_en'];
+    protected $casts = ['advantages_ar'=>'array','advantages_en'=>'array'];
 
 
     ##  Mutators and Accessors

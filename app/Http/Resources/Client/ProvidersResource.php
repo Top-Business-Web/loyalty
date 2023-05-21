@@ -24,8 +24,9 @@ class ProvidersResource extends JsonResource
                 'email'=>$this->email,
                 'image'=>$this->image,
                 'categories'=> CategoryResource::collection($this->categories),
-                'description'=> 'description',
-                'rate'=> round(Rate::where('provider_id',$this->id)->avg('value'),1),
+                'description'=> $this->{"description_".accept_language()},
+                'advantages'=> $this->{"advantages_".accept_language()},
+                'rate'=> ($this->rate)?? round(Rate::where('provider_id',$this->id)->avg('value'),1),
                 'my_rate'=> Auth::guard('api')->user() ? Rate::where(['provider_id'=>$this->id, 'client_id' => Auth::guard('api')->user()->id])->first()?? null : null
         ];
     }

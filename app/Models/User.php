@@ -10,7 +10,32 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $fillable=[
+        'name',
+        'email',
+        'phone_code',
+        'phone',
+        'location',
+        'role_id',
+        'password',
+        'status',
+        'image',
+        'balance',
+        'is_best',
+        'rate',
+        'advantages_ar',
+        'advantages_en',
+        'description_ar',
+        'description_en',
+    ];
+
+    protected $casts = [
+        'advantages_ar' => 'array',
+        'advantages_en' => 'array',
+        'description_ar' => 'string',
+        'description_en' => 'string',
+
+    ];
     protected $hidden = [
         'password',
         'remember_token',

@@ -17,7 +17,7 @@ class UserController extends Controller
     use PhotoTrait;
     public function index(request $request)
     {
-        if($request->ajax()) {
+        if ($request->ajax()) {
             $user = User::latest()->get();
             return Datatables::of($user)
                 ->addColumn('action', function ($user) {
@@ -30,43 +30,42 @@ class UserController extends Controller
                        ';
                 })
                 ->editColumn('balance', function ($user) {
-                    if($user->balance != null)
-                        return $user->balance.' نقطة ' ;
+                    if ($user->balance != null)
+                        return $user->balance . ' نقطة ';
                     else
                         return '<span class="badge badge-danger">لا يوجد نقاط</span>';
                 })
                 ->editColumn('user_type', function ($user) {
-                    if($user->role_id == 1)
-                        return '<span class="badge badge-info">مقدم خدمات</span>' ;
+                    if ($user->role_id == 1)
+                        return '<span class="badge badge-info">مقدم خدمات</span>';
                     else
                         return '<span class="badge badge-info">عميل</span>';
                 })
                 ->editColumn('email', function ($user) {
-                        return '<a href="mailto:'.$user->email.'">'.$user->email.'</a>';
+                    return '<a href="mailto:' . $user->email . '">' . $user->email . '</a>';
                 })
-            ->addColumn('rate', function ($user) {
-                $rate = round(Rate::where('provider_id',$user->id)->avg('value'),1);
-                $stars ="";
-                        for($i=1;$i<6;$i++){
-                            if($rate > $i){
-                                $stars .=' <span class="fa fa-star checked"></span>';
-                            }else{
-                                $stars .=' <span class="fa fa-star"></span>';
-                            }
-
+                ->addColumn('rate', function ($user) {
+                    $rate = round(Rate::where('provider_id', $user->id)->avg('value'), 1);
+                    $stars = "";
+                    for ($i = 1; $i < 6; $i++) {
+                        if ($rate > $i) {
+                            $stars .= ' <span class="fa fa-star checked"></span>';
+                        } else {
+                            $stars .= ' <span class="fa fa-star"></span>';
                         }
-                        return $stars;
+                    }
+                    return $stars;
                 })
 
                 ->editColumn('image', function ($user) {
                     $image = ($user->image);
                     return '
-                    <img alt="image" onclick="window.open(this.src)" class="avatar avatar-md rounded-circle" src="'.$image.'">
+                    <img alt="image" onclick="window.open(this.src)" class="avatar avatar-md rounded-circle" src="' . $image . '">
                     ';
                 })
                 ->escapeColumns([])
                 ->make(true);
-        }else{
+        } else {
             return view('Admin/user/index');
         }
     }
@@ -81,14 +80,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $valiadate = $request->validate([
-           'name'     => 'required',
-           'password' => 'required|min:6',
-        ],[
+            'name'     => 'required',
+            'password' => 'required|min:6',
+        ], [
             'user_name.required' => 'يرجي ادخال اسم المستخدم'
         ]);
-        $data = $request->except('_token','image');
-        if($request->has('image') && $request->image != null)
-            $data['image'] = $this->saveImage($request->image,'assets/uploads/users','image','100');
+        $data = $request->except('_token', 'image');
+        if ($request->has('image') && $request->image != null)
+            $data['image'] = $this->saveImage($request->image, 'assets/uploads/users', 'image', '100');
 
         $data['password'] = Hash::make($request->password);
         User::create($data);
@@ -105,7 +104,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('Admin.user.parts.edit',compact('user'));
+        return view('Admin.user.parts.edit', compact('user'));
     }
 
 
@@ -113,21 +112,26 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $data = $request->except('_token','_method','image');
+        if (!$user) {
+            return response()->json(['status' => 404]);
+        }
 
-        if($request->has('password') && $request->password != null)
+        $data = $request->except('_token', '_method', 'image');
+
+        if ($request->has('password') && $request->password != null)
             $data['password'] = Hash::make($request->password);
         else
             unset($data['password']);
 
-        if($request->has('image') && $request->image != null){
+        if ($request->has('image') && $request->image != null) {
             if (file_exists($user->getAttributes()['image'])) {
                 unlink($user->getAttributes()['image']);
             }
-            $data['image'] = $this->saveImage($request->image,'assets/uploads/users','photo');
+            $data['image'] = $this->saveImage($request->image, 'assets/uploads/users', 'photo');
         }
 
-        $user->update($data);
+        // dd($data)
+        User::where('id', $user->id)->update($data);
         return response()->json(['status' => 200]);
     }
 
@@ -149,6 +153,6 @@ class UserController extends Controller
             unlink($user->getAttributes()['image']);
         }
         $user->delete();
-        return response(['message'=>'تم الحذف بنجاح','status'=>200],200);
+        return response(['message' => 'تم الحذف بنجاح', 'status' => 200], 200);
     }
 }

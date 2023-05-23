@@ -39,49 +39,82 @@
             <div class="col-12">
                 <div class="form-group row">
                     {{--  <input type="hidden" name="is_best" value="0" />  --}}
-                    <input type="checkbox" class="form-control col-2" id="isBest" name="is_best" value="1" placeholder="******">
+                    <input type="checkbox" class="form-control col-2" {{ ($user->is_best)? 'checked': '' }} id="isBest" name="is_best" value="1" placeholder="******">
                     <label for="btn_link" class="form-control-label col-10">وضع كمفضل</label>
                 </div>
             </div>
         @endif
     </div>
     <div class="row py-5">
-        <div class="col-12" hidden id="rate">
+        <div class="col-12" {{ ($user->is_best)? '': 'hidden' }}  id="rate">
             <label for="">التقييم</label>
-            <input type="number" class="form-control" name="rate" />
+            <input type="number" class="form-control" name="rate" value="{{ $user->rate }}" />
         </div>
     </div>
     <div class="row">
-        <div class="col-6" hidden id="desc_ar">
+        <div class="col-6" {{ ($user->is_best)? '': 'hidden' }} id="desc_ar">
             <label for="">الوصف بالعربي</label>
-            <textarea class="form-control" name="description_ar" rows="8"></textarea>
+            <textarea class="form-control" name="description_ar" rows="8">{{ $user->description_ar }}</textarea>
         </div>
-        <div class="col-6" hidden id="desc_en">
+        <div class="col-6" {{ ($user->is_best)? '': 'hidden' }} id="desc_en">
             <label for="">الوصف بالانجليزي</label>
-            <textarea class="form-control" name="description_en" rows="8"></textarea>
+            <textarea class="form-control" name="description_en" rows="8">{{ $user->description_en }}</textarea>
         </div>
     </div>
-    <div class="row" hidden id="adv">
+    @if(!empty($user->advantages_ar))
+    <div class="row" {{ ($user->is_best)? '': 'hidden' }} id="adv">
         <div class="col-4">
             <div class="form-group">
                 <label class="control-label">مزايا</label>
                 <div class="row">
+
                     <div class="col-6 itemItems">
+                        @foreach($user->advantages_ar as $item)
                         <label for="">Ar</label>
                         <input type="text" name="advantages_ar[]" class="form-control InputItem InputItemExtra"
-                            value="">
+                            value="{{$item}}">
+                        @endforeach
                     </div>
+
+
                     <div class="col-6 itemItems2">
+                        @foreach($user->advantages_en as $item)
                         <label for="">En</label>
-                        <input type="text" name="advantages_en[]" class="form-control InputItem InputItemExtra"
-                            value="">
+                        <input type="text" name="advantages_en[]"  class="form-control InputItem InputItemExtra"
+                            value="{{$item}}">
+                        @endforeach
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+    @else
+        <div class="row" {{ ($user->is_best)? '': 'hidden' }} id="adv">
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="control-label">مزايا</label>
+                    <div class="row">
 
-    <div class="col-4" hidden id="btn">
+                        <div class="col-6 itemItems">
+                            <label for="">Ar</label>
+                            <input type="text" name="advantages_ar[]" class="form-control InputItem InputItemExtra"
+                                   value="">
+                        </div>
+
+
+                        <div class="col-6 itemItems2">
+                            <label for="">En</label>
+                            <input type="text" name="advantages_en[]" class="form-control InputItem InputItemExtra"
+                                   value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    @endif
+    <div class="col-4" {{ ($user->is_best)? '': 'hidden' }} id="btn">
         <button type="button" class="btn btn-primary MoreItem">اضافة سطر</button>
         <button type="button" class="btn btn-danger delItem">حذف سطر</button>
     </div>

@@ -32,8 +32,7 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'advantages_ar' => 'array',
         'advantages_en' => 'array',
-        'description_ar' => 'string',
-        'description_en' => 'string',
+
 
     ];
     protected $hidden = [
@@ -41,10 +40,7 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
-    protected $casts = [
-        'advantages_ar'=>'array',
-        'advantages_en'=>'array'
-    ];
+
 
 
     ##  Mutators and Accessors

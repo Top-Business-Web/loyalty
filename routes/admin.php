@@ -32,6 +32,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     })->name('adminHome');
     #### Sliders ####
     Route::resource('sliders', SliderAdminController::class);
+    Route::get('coffee', [SliderAdminController::class, 'coffee'])->name('coffee');
     Route::POST('slider.delete', [SliderAdminController::class,'delete'])->name('sliders.delete');
     #### Admins ####
     Route::resource('admins',AdminController::class);

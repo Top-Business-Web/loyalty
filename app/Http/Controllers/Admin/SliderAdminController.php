@@ -16,8 +16,8 @@ class SliderAdminController extends Controller
     use PhotoTrait;
     public function index(request $request)
     {
-        if($request->ajax()) {
-            $sliders = Slider::latest()->get();
+        if ($request->ajax()) {
+            $sliders = Slider::latest()->where('type', 'restaurant')->get();
             return Datatables::of($sliders)
                 ->addColumn('action', function ($sliders) {
                     return '
@@ -30,18 +30,39 @@ class SliderAdminController extends Controller
                 })
                 ->editColumn('image', function ($sliders) {
                     return '
-                    <img alt="Slider" onclick="window.open(this.src)" style="cursor:pointer" class="avatar avatar-lg bradius cover-image" src="'.$sliders->image.'">
-                    ';
-                })
-                ->editColumn('link', function ($sliders) {
-                    return '
-                        <a href="'.($sliders->link != null ? $sliders->link : '#').'" class="btn btn-pill btn-secondary">تصفح</a>
+                    <img alt="Slider" onclick="window.open(this.src)" style="cursor:pointer" class="avatar avatar-lg bradius cover-image" src="' . $sliders->image . '">
                     ';
                 })
                 ->escapeColumns([])
                 ->make(true);
-        }else{
-            return view('Admin/sliders/index');
+        } else {
+            return view('Admin.sliders.restaurant');
+        }
+    }
+
+    public function coffee(request $request)
+    {
+        if ($request->ajax()) {
+            $sliders = Slider::latest()->where('type', 'coffee')->get();
+            return Datatables::of($sliders)
+                ->addColumn('action', function ($sliders) {
+                    return '
+                            <button type="button" data-id="' . $sliders->id . '" class="btn btn-pill btn-info-light editBtn"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-pill btn-danger-light" data-toggle="modal" data-target="#delete_modal"
+                                    data-id="' . $sliders->id . '" data-title="#' . $sliders->id . '">
+                                    <i class="fas fa-trash"></i>
+                            </button>
+                       ';
+                })
+                ->editColumn('image', function ($sliders) {
+                    return '
+                    <img alt="Slider" onclick="window.open(this.src)" style="cursor:pointer" class="avatar avatar-lg bradius cover-image" src="' . $sliders->image . '">
+                    ';
+                })
+                ->escapeColumns([])
+                ->make(true);
+        } else {
+            return view('Admin.sliders.coffee');
         }
     }
 
@@ -50,7 +71,8 @@ class SliderAdminController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create(){
+    public function create()
+    {
         return view('Admin/sliders.parts.create');
     }
 
@@ -58,21 +80,23 @@ class SliderAdminController extends Controller
     {
         $inputs = $request->validate([
             'image'         => 'required|mimes:jpeg,jpg,png,gif,svg,jfif',
-//            'link'          => 'required|url',
-        ],[
+            //            'link'          => 'required|url',
+            'type' => 'required'
+        ], [
             'link.url'  => 'يرجي ادخال رابط صحيح يبدأ ب http'
         ]);
-        if($request->has('image'))
-            $inputs['image'] = $this->saveImage($request->image,'assets/uploads/sliders','no');
+        if ($request->has('image'))
+            $inputs['image'] = $this->saveImage($request->image, 'assets/uploads/sliders', 'no');
 
-        if(Slider::create($inputs))
-            return response()->json(['status'=>200]);
+        if (Slider::create($inputs))
+            return response()->json(['status' => 200]);
         else
-            return response()->json(['status'=>405]);
+            return response()->json(['status' => 405]);
     }
 
-    public function edit(Slider $slider){
-        return view('Admin/sliders.parts.edit',compact('slider'));
+    public function edit(Slider $slider)
+    {
+        return view('Admin/sliders.parts.edit', compact('slider'));
     }
 
 
@@ -82,18 +106,19 @@ class SliderAdminController extends Controller
         //
     }
 
-    public function update(request $request,$id)
+    public function update(request $request, $id)
     {
         $inputs = $request->validate([
             'image'         => 'nullable|mimes:jpeg,jpg,png,gif,svg',
-//            'link'          => 'required|url',
+            //            'link'          => 'required|url',
+            'type' => 'required',
         ]);
         $slider = Slider::findOrFail($id);
-        if($request->has('image')){
+        if ($request->has('image')) {
             if (file_exists($slider->image)) {
                 unlink($slider->image);
             }
-            $inputs['image'] = $this->saveImage($request->image,'assets/uploads/sliders','no');
+            $inputs['image'] = $this->saveImage($request->image, 'assets/uploads/sliders', 'no');
         }
         if ($slider->update($inputs))
             return response()->json(['status' => 200]);
@@ -113,6 +138,7 @@ class SliderAdminController extends Controller
             unlink($slider->getAttributes()['image']);
         }
         $slider->delete();
-        return response(['message'=>'تم الحذف بنجاح','status'=>200],200);
+        return response(['message' => 'تم الحذف بنجاح', 'status' => 200], 200);
     }
+
 }

@@ -1,13 +1,13 @@
 @extends('Admin/layouts/master')
 
-@section('title')  {{($setting->title) ?? ''}} | الصور المتحركة @endsection
-@section('page_name') الصور المتحركة @endsection
+@section('title')  {{($setting->title) ?? ''}} |  الصور المتحركة كافيهات  @endsection
+@section('page_name')  الصور المتحركة كافيهات   @endsection
 @section('content')
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">الصور المتحركة</h3>
+                    <h3 class="card-title"> الصور المتحركة كافيهات  </h3>
                     <p class="text-gray mt-2">تظهر في بداية الصفحة الرئيسية</p>
                     <div class="">
                         <button class="btn btn-secondary btn-icon text-white addBtn">
@@ -91,13 +91,9 @@
         var columns = [
             {data: 'id', name: 'id'},
             {data: 'image', name: 'image'},
-            // {data: 'desc_ar', name: 'desc_ar'},
-            // {data: 'desc_en', name: 'desc_en'},
-            // {data: 'btn_title', name: 'btn_title'},
-            // // {data: 'btn_link', name: 'btn_link'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
-        showData('{{route('sliders.index')}}', columns);
+        showData('{{route('coffee')}}', columns);
         // Delete Using Ajax
         deleteScript('{{route('sliders.delete')}}');
         // Add Using Ajax

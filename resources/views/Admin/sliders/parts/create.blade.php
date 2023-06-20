@@ -5,6 +5,13 @@
         <input type="file" class="dropify" name="image" accept="image/png, image/gif, image/jpeg,image/jpg"/>
         <span class="form-text text-danger text-center">مسموح بالصيغ الاتية png, gif, jpeg, jpg</span>
     </div>
+    <div class="form-group">
+        <label for="type" class="form-control-label">النوع</label>
+        <select name="type" class="form-control">
+            <option value="coffee" style="text-align: center">كافيه</option>
+            <option value="restaurant" style="text-align: center">مطعم</option>
+        </select>
+    </div>
 {{--    <div class="row">--}}
 {{--        <div class="col-12">--}}
 {{--            <div class="form-group">--}}

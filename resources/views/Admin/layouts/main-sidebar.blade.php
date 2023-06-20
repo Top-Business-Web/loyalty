@@ -18,11 +18,16 @@
         </li>
 
         <li class="slide">
-            <a class="side-menu__item" href="{{route('sliders.index')}}">
-                <i class="icon icon-home side-menu__icon"></i>
-                <span class="side-menu__label">الصور المتحركة</span>
-            </a>
-        </li>
+    <a class="side-menu__item" data-toggle="slide" href="#">
+        <i class="fa fa-images side-menu__icon"></i>
+        <span class="side-menu__label">الصور المتحركة</span><i class="angle fa fa-angle-left"></i>
+    </a>
+    <ul class="slide-menu">
+        <li><a href="{{route('sliders.index')}}" class="slide-item">مطاعم</a></li>
+        <li><a href="{{route('coffee')}}" class="slide-item">كافيهات</a></li>
+    </ul>
+</li>
+
         <li class="slide">
             <a class="side-menu__item" href="{{route('admins.index')}}">
                 <i class="fe fe-users side-menu__icon"></i>

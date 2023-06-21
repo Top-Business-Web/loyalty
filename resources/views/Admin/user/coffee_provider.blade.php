@@ -33,6 +33,7 @@
                                 <th>الايميل</th>
                                 <th>الرصيد</th>
                                 <th>التقيم</th>
+                                <th>في الخدمة</th>
                                 <th class="rounded-end">العمليات</th>
                             </tr>
                             </thead>
@@ -102,6 +103,10 @@
             {data: 'email', name: 'email'},
             {data: 'balance', name: 'balance'},
             {data: 'rate', name: 'rate'},
+            {
+                data: 'in_service',
+                name: 'in_service'
+            },
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
         showData('{{route('coffeeProvider')}}', columns);
@@ -118,6 +123,35 @@
         // Edit Using Ajax
         showEditModal('{{route('users.edit',':id')}}');
         editScript();
+
+        function updateRequestStatus(selectElement, id) {
+            var selectedValue = $(selectElement).val();
+
+            // Make an Ajax request to update the status
+            $.ajax({
+              url: '{{ route('RequestStatusDegree') }}',
+              type: 'post',
+              data: {
+                id: id,
+                status: selectedValue,
+                "_token": "{{ csrf_token() }}",
+              },
+              success: function(data) {
+                if (data.code === 200) {
+                  if (data.status === 1) {
+                    toastr.success('المزود في الخدمة');
+                  } else if (data.status === 0) {
+                    toastr.success('المزود ليس في الخدمة');
+                  }
+                }
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                // Handle the error
+                console.log(textStatus, errorThrown);
+              }
+            });
+          }
+
     </script>
 @endsection
 

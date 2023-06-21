@@ -14,11 +14,19 @@ use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
+    /**
+     * Package Saved Images
+     */
     use PhotoTrait;
+
+    /**
+     * this function return Users
+     */
+    // Index Start
     public function index(request $request)
     {
         if ($request->ajax()) {
-            $user = User::latest()->get();
+            $user = User::latest()->where('role_id', 2)->get();
             return Datatables::of($user)
                 ->addColumn('action', function ($user) {
                     return '
@@ -42,7 +50,12 @@ class UserController extends Controller
                         return '<span class="badge badge-info">عميل</span>';
                 })
                 ->editColumn('email', function ($user) {
-                    return '<a href="mailto:' . $user->email . '">' . $user->email . '</a>';
+                    if(isset($user->email)){
+                        return '<a href="mailto:' . $user->email . '">' . $user->email . '</a>';
+                    }
+                    else {
+                        return '<td>غير موجود</td>';
+                    }
                 })
                 ->addColumn('rate', function ($user) {
                     $rate = round(Rate::where('provider_id', $user->id)->avg('value'), 1);
@@ -69,6 +82,138 @@ class UserController extends Controller
             return view('Admin/user/index');
         }
     }
+    // Index End
+
+    /**
+     * this function return Providers Restaurant
+     */
+    // Restaurant Start
+    public function restaurantProvider(request $request)
+    {
+        if ($request->ajax()) {
+            $user = User::latest()->where('role_id', 1)->where('provider_type', 1)->get();
+            return Datatables::of($user)
+                ->addColumn('action', function ($user) {
+                    return '
+                            <button type="button" data-id="' . $user->id . '" class="btn btn-pill btn-info-light editBtn"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-pill btn-danger-light" data-toggle="modal" data-target="#delete_modal"
+                                    data-id="' . $user->id . '" data-title="' . $user->name . '">
+                                    <i class="fas fa-trash"></i>
+                            </button>
+                       ';
+                })
+                ->editColumn('balance', function ($user) {
+                    if ($user->balance != null)
+                        return $user->balance . ' نقطة ';
+                    else
+                        return '<span class="badge badge-danger">لا يوجد نقاط</span>';
+                })
+                ->editColumn('user_type', function ($user) {
+                    if ($user->role_id == 1)
+                        return '<span class="badge badge-info">مقدم خدمات</span>';
+                    else
+                        return '<span class="badge badge-info">عميل</span>';
+                })
+                ->editColumn('email', function ($user) {
+                    if(isset($user->email)){
+                        return '<a href="mailto:' . $user->email . '">' . $user->email . '</a>';
+                    }
+                    else {
+                        return '<td>غير موجود</td>';
+                    }
+                })
+                ->addColumn('rate', function ($user) {
+                    $rate = round(Rate::where('provider_id', $user->id)->avg('value'), 1);
+                    $stars = "";
+                    for ($i = 1; $i < 6; $i++) {
+                        if ($rate > $i) {
+                            $stars .= ' <span class="fa fa-star checked"></span>';
+                        } else {
+                            $stars .= ' <span class="fa fa-star"></span>';
+                        }
+                    }
+                    return $stars;
+                })
+
+                ->editColumn('image', function ($user) {
+                    $image = ($user->image);
+                    return '
+                    <img alt="image" onclick="window.open(this.src)" class="avatar avatar-md rounded-circle" src="' . $image . '">
+                    ';
+                })
+                ->escapeColumns([])
+                ->make(true);
+        } else {
+            return view('Admin.user.restaurant_provider');
+        }
+    }
+
+    // Restaurant End
+
+    /**
+     * this function return Coffee Providers
+     */
+     // Coffee Provider Start
+    public function coffeeProvider(request $request)
+    {
+        if ($request->ajax()) {
+            $user = User::latest()->where('role_id', 1)->where('provider_type', 2)->get();
+            return Datatables::of($user)
+                ->addColumn('action', function ($user) {
+                    return '
+                            <button type="button" data-id="' . $user->id . '" class="btn btn-pill btn-info-light editBtn"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-pill btn-danger-light" data-toggle="modal" data-target="#delete_modal"
+                                    data-id="' . $user->id . '" data-title="' . $user->name . '">
+                                    <i class="fas fa-trash"></i>
+                            </button>
+                       ';
+                })
+                ->editColumn('balance', function ($user) {
+                    if ($user->balance != null)
+                        return $user->balance . ' نقطة ';
+                    else
+                        return '<span class="badge badge-danger">لا يوجد نقاط</span>';
+                })
+                ->editColumn('user_type', function ($user) {
+                    if ($user->role_id == 1)
+                        return '<span class="badge badge-info">مقدم خدمات</span>';
+                    else
+                        return '<span class="badge badge-info">عميل</span>';
+                })
+                ->editColumn('email', function ($user) {
+                    if(isset($user->email)){
+                        return '<a href="mailto:' . $user->email . '">' . $user->email . '</a>';
+                    }
+                    else {
+                        return '<td>غير موجود</td>';
+                    }
+                })
+                ->addColumn('rate', function ($user) {
+                    $rate = round(Rate::where('provider_id', $user->id)->avg('value'), 1);
+                    $stars = "";
+                    for ($i = 1; $i < 6; $i++) {
+                        if ($rate > $i) {
+                            $stars .= ' <span class="fa fa-star checked"></span>';
+                        } else {
+                            $stars .= ' <span class="fa fa-star"></span>';
+                        }
+                    }
+                    return $stars;
+                })
+
+                ->editColumn('image', function ($user) {
+                    $image = ($user->image);
+                    return '
+                    <img alt="image" onclick="window.open(this.src)" class="avatar avatar-md rounded-circle" src="' . $image . '">
+                    ';
+                })
+                ->escapeColumns([])
+                ->make(true);
+        } else {
+            return view('Admin.user.coffee_provider');
+        }
+    }
+    // Coffee Provider End
 
 
     public function create()

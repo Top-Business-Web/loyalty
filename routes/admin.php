@@ -38,6 +38,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     Route::resource('admins',AdminController::class);
     Route::POST('delete_admin',[AdminController::class,'delete'])->name('delete_admin');
     Route::get('my_profile',[AdminController::class,'myProfile'])->name('myProfile');
+    Route::get('provider_coffee',[UserController::class,'coffeeProvider'])->name('coffeeProvider');
+    Route::get('provider_restaurant',[UserController::class,'restaurantProvider'])->name('restaurantProvider');
 
     #### Admins ####
     Route::resource('users',UserController::class);

@@ -44,6 +44,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     #### Admins ####
     Route::resource('users',UserController::class);
     Route::POST('delete_user',[UserController::class,'delete'])->name('usersDelete');
+    Route::post('RequestStatusDegree/', [UserController::class, 'RequestStatusDegree'])->name('RequestStatusDegree');
 
 
 

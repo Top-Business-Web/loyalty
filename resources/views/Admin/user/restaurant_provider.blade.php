@@ -1,11 +1,12 @@
 @extends('Admin/layouts/master')
 @section('title')
-    {{($setting->title) ?? ''}} | مزود مطاعم
+    {{ $setting->title ?? '' }} | مزود مطاعم
 @endsection
-@section('page_name') مزود مطاعم @endsection
+@section('page_name')
+    مزود مطاعم
+@endsection
 @section('content')
-
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+    {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
     <style>
         .checked {
             color: orange;
@@ -26,15 +27,16 @@
                         <!--begin::Table-->
                         <table class="table table-striped table-bordered w-100" id="dataTable">
                             <thead>
-                            <tr class="fw-bolder text-muted bg-light">
-                                <th>#</th>
-                                <th>الصورة</th>
-                                <th>اسم المزود</th>
-                                <th>الايميل</th>
-                                <th>الرصيد</th>
-                                <th>التقيم</th>
-                                <th class="rounded-end">العمليات</th>
-                            </tr>
+                                <tr class="fw-bolder text-muted bg-light">
+                                    <th>#</th>
+                                    <th>الصورة</th>
+                                    <th>اسم المزود</th>
+                                    <th>الايميل</th>
+                                    <th>الرصيد</th>
+                                    <th>التقيم</th>
+                                    <th>في الخدمة</th>
+                                    <th class="rounded-end">العمليات</th>
+                                </tr>
                             </thead>
                         </table>
                     </div>
@@ -44,7 +46,7 @@
 
         <!--Delete MODAL -->
         <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -72,7 +74,8 @@
 
 
         <!-- Edit MODAL -->
-        <div class="modal fade bd-example-modal-lg" id="editOrCreate" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade bd-example-modal-lg" id="editOrCreate" data-backdrop="static" tabindex="-1" role="dialog"
+            aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -91,34 +94,88 @@
 
     </div>
     @include('Admin/layouts/myAjaxHelper')
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @endsection
 @section('ajaxCalls')
     <script>
-        var columns = [
-            {data: 'id', name: 'id'},
-            {data: 'image', name: 'image'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'balance', name: 'balance'},
-            {data: 'rate', name: 'rate'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+        var columns = [{
+                data: 'id',
+                name: 'id'
+            },
+            {
+                data: 'image',
+                name: 'image'
+            },
+            {
+                data: 'name',
+                name: 'name'
+            },
+            {
+                data: 'email',
+                name: 'email'
+            },
+            {
+                data: 'balance',
+                name: 'balance'
+            },
+            {
+                data: 'rate',
+                name: 'rate'
+            },
+            {
+                data: 'in_service',
+                name: 'in_service'
+            },
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            },
         ]
-        showData('{{route('restaurantProvider')}}', columns);
+        showData('{{ route('restaurantProvider') }}', columns);
         // Delete Using Ajax
 
-        deleteScript('{{route('usersDelete')}}');
+        deleteScript('{{ route('usersDelete') }}');
 
         // Add Using Ajax
-        showAddModal('{{route('users.create')}}');
+        showAddModal('{{ route('users.create') }}');
         addScript();
 
 
 
         // Edit Using Ajax
-        showEditModal('{{route('users.edit',':id')}}');
+        showEditModal('{{ route('users.edit', ':id') }}');
         editScript();
+
+        function updateRequestStatus(selectElement, id) {
+            var selectedValue = $(selectElement).val();
+
+            // Make an Ajax request to update the status
+            $.ajax({
+              url: '{{ route('RequestStatusDegree') }}',
+              type: 'post',
+              data: {
+                id: id,
+                status: selectedValue,
+                "_token": "{{ csrf_token() }}",
+              },
+              success: function(data) {
+                if (data.code === 200) {
+                  if (data.status === 1) {
+                    toastr.success('المزود في الخدمة');
+                  } else if (data.status === 0) {
+                    toastr.success('المزود ليس في الخدمة');
+                  }
+                }
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                // Handle the error
+                console.log(textStatus, errorThrown);
+              }
+            });
+          }
+
     </script>
 @endsection
-
-

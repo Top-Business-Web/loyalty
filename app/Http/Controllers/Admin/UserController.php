@@ -108,6 +108,12 @@ class UserController extends Controller
                     else
                         return '<span class="badge badge-danger">لا يوجد نقاط</span>';
                 })
+                ->editColumn('in_service', function ($user) {
+                        return '<select class="form-control" data-id="' . $user->id . '" onchange="updateRequestStatus(this, ' . $user->id . ')">
+                        <option ' . ($user->status == 1 ? "selected" : "") . ' value="1" style="text-align: center">نعم</option>
+                        <option ' . ($user->status == 0 ? "selected" : "") . ' value="0" style="text-align: center">لا</option>
+                        </select>';
+                })
                 ->editColumn('user_type', function ($user) {
                     if ($user->role_id == 1)
                         return '<span class="badge badge-info">مقدم خدمات</span>';
@@ -180,6 +186,12 @@ class UserController extends Controller
                     else
                         return '<span class="badge badge-info">عميل</span>';
                 })
+                ->editColumn('in_service', function ($user) {
+                    return '<select class="form-control" data-id="' . $user->id . '" onchange="updateRequestStatus(this, ' . $user->id . ')">
+                    <option ' . ($user->status == 1 ? "selected" : "") . ' value="1" style="text-align: center">نعم</option>
+                    <option ' . ($user->status == 0 ? "selected" : "") . ' value="0" style="text-align: center">لا</option>
+                    </select>';
+            })
                 ->editColumn('email', function ($user) {
                     if(isset($user->email)){
                         return '<a href="mailto:' . $user->email . '">' . $user->email . '</a>';
@@ -289,6 +301,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function RequestStatusDegree(Request $request)
+    {
+        $inputs = User::find($request->id)->update([
+            'status' => $request->status,
+        ]);
+
+        return response()->json(['code' => 200, 'status' => $request->status]);
     }
 
     public function delete(request $request)

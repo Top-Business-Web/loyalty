@@ -26,10 +26,11 @@ class ProductController extends Controller
                                     <i class="fas fa-trash"></i>
                             </button>
                               <a class="btn btn-info add-cart" href="#!" product-id="'. $product->id .'" ><i class=" far fa-shopping-cart"></i>add to cart</a>
-
                        ';
                 })
-
+                ->editColumn('user_id', function ($product) {
+                    return $product->user->name;
+                })
                 ->editColumn('name_ar', function ($product) {
                     return $product->name_ar;
                 })

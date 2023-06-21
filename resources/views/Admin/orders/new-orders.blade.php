@@ -22,6 +22,8 @@
                             <tr class="fw-bolder text-muted bg-light">
                                 <th class="min-w-25px">رقم الطلب</th>
                                 <th class="min-w-20px">العميل</th>
+                                <th class="min-w-20px">مزود الخدمة</th>
+                                <th class="min-w-20px">التصنيف</th>
                                 <th class="min-w-20px">الهاتف</th>
                                 <th class="min-w-20px">وقت الطلب</th>
 {{--                                @if(checkPermission(53))--}}
@@ -96,6 +98,8 @@
         var columns = [
             {data: 'id', name: 'id'},
             {data: 'user_id', name: 'user_id'},
+            {data: 'provider_id', name: 'provider_id'},
+            {data: 'category_id', name: 'category_id'},
             {data: 'phone', name: 'phone'},
             {data: 'created_at', name: 'created_at'},
 {{--                @if(checkPermission(53))--}}

@@ -163,7 +163,7 @@
             <div class="">
                 <div class="invoiceBox">
                     <div class="titleLogo d-flex aling-items-center justify-content-between ">
-                        <h2 class="Ar title">فاتورة ضريبية</h2>
+                        <h2 class="Ar title">فاتورة</h2>
                         <div class="img">
                             <img src="{{asset('assets/uploads/logo.png')}}" alt="">
                         </div>
@@ -177,13 +177,13 @@
                                 <h4 class="Ar">وقت و تاريخ اصدار الفاتورة  : {{$order->created_at}}</h4>
                             </div>
                             <div class="info2 ">
-                                <h4 class="Ar"> عنوان المتجر :{{$order->provider->town->title_ar??''}} </h4>
+                                <h4 class="Ar"> عنوان الشركة :{{$order->provider->town->title_ar??''}} </h4>
                             </div>
                             <div class=" info2">
-                                <h4 class="Ar">  اسم المورد :{{$order->provider->name??''}}</h4>
+                                <h4 class="Ar">  اسم الشركة :{{$order->provider->name??''}}</h4>
                             </div>
                             <div class=" info2">
-                                <h4 class="Ar">   الرقم الضريبي للمورد :{{$order->provider->vat_number??''}}</h4>
+                                <h4 class="Ar">   الرقم الضريبي :{{$order->provider->vat_number??''}}</h4>
                             </div>
                             <!-- الرقم الضريبي للمشتري  -->
                             <div class=" info2 buy">
@@ -262,7 +262,7 @@
                                     <h4>إجمالي المبلغ (غير شامل ضريبة القيمة المضافة)</h4>
                                 </th>
                                 <td>
-                                    <p>{{$order->total_price}}جنيها</p>
+                                    <p>{{$order->total_price}}ريال</p>
                                 </td>
                             </tr>
                             <tr>
@@ -273,8 +273,8 @@
                                 <td>
                                     <p>
 
-{{--                                        {{$offer->total_tax}}--}}
-                                          0 جنيها </p></bdo>
+                                        {{$order->total_price * .15}}
+                                           ريال </p></bdo>
                                 </td>
 
                             </tr>
@@ -284,7 +284,7 @@
                                     <h4>إجمالي المبلغ</h4>
                                 </th>
                                 <td>
-                                    <p>{{$order->total_price}}جنيها </p>
+                                    <p>{{$order->total_price * 1.15}} ريال </p>
                                 </td>
 
                             </tr>

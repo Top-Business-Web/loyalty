@@ -13,19 +13,16 @@ use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
 {
-
     public function newOrders(request $request){
 
         if($request->ajax()) {
             $orders = Order::latest()->get();
             return Datatables::of($orders)
                 ->addColumn('action', function ($orders) {
-
                     return '<button class="btn btn-pill btn-danger-light" data-toggle="modal" data-target="#delete_modal"
                                     data-id="' . $orders->id . '" data-title="' . @$orders->user->name . '">
                                     <i class="fas fa-trash"></i>
                             </button>
-                       
                        ';
                 })
                 ->addColumn('details', function ($orders) {
@@ -41,6 +38,19 @@ class OrderController extends Controller
 
                     return $invoice;
 
+                })
+                ->editColumn('provider_id', function($orders) {
+                    return '<td>'. $orders->provider->name .'</td>';
+                })
+                ->editColumn('category_id', function($orders) {
+                    if($orders->provider->provider_type == 1)
+                    {
+                        return '<td>مطعم</td>';
+                    }
+                    else
+                    {
+                        return '<td>كافيه</td>';
+                    }
                 })
                 ->editColumn('id', function ($orders) {
 

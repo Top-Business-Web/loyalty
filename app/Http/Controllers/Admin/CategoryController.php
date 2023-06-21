@@ -33,6 +33,9 @@ class CategoryController extends Controller
 
                        ';
                 })
+                ->editColumn('user_id', function ($category) {
+                    return $category->user->name;
+                })
                 ->editColumn('name_ar', function ($category) {
                     return $category->name_ar;
                 })

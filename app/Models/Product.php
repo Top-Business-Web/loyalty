@@ -8,13 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'name_ar',
+        'name_en',
+        'price',
+        'price_after_discount',
+        'the_best',
+        'image',
+    ];
 
 
-    ##  Mutators and Accessors
+
     public function getImageAttribute()
     {
         return get_file($this->attributes['image']);
+    }
+
+     /**
+     * this function Relationship between table Product and User by the column user_id in table Product
+     */
+     public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function products(){

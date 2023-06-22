@@ -29,6 +29,7 @@
                                 <th class="min-w-50px">الصورة</th>
                                 <th class="min-w-50px">الاسم</th>
                                 <th class="min-w-125px">الايميل</th>
+                                <th class="min-w-125px">الصلاحية</th>
                                 <th class="min-w-50px rounded-end">العمليات</th>
                             </tr>
                             </thead>
@@ -91,6 +92,7 @@
             {data: 'image', name: 'image'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
+            {data: 'role', name: 'role'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
         showData('{{route('admins.index')}}', columns);

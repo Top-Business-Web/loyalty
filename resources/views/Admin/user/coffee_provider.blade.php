@@ -5,7 +5,7 @@
 @section('page_name') مزود كافيهات @endsection
 @section('content')
 
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+   {{--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  --}}
     <style>
         .checked {
             color: orange;
@@ -114,12 +114,40 @@
         // Add Using Ajax
         showAddModal('{{route('users.create')}}');
         addScript();
-
-
-
         // Edit Using Ajax
         showEditModal('{{route('users.edit',':id')}}');
         editScript();
+<<<<<<< HEAD
+
+        function updateRequestStatus(selectElement, id) {
+            var selectedValue = $(selectElement).val();
+
+            // Make an Ajax request to update the status
+            $.ajax({
+              url: '{{ route('RequestStatusDegree') }}',
+              type: 'post',
+              data: {
+                id: id,
+                status: selectedValue,
+                "_token": "{{ csrf_token() }}",
+              },
+              success: function(data) {
+                if (data.code === 200) {
+                  if (data.status === 1) {
+                    toastr.success('المزود في الخدمة');
+                  } else if (data.status === 0) {
+                    toastr.success('المزود ليس في الخدمة');
+                  }
+                }
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                // Handle the error
+                console.log(textStatus, errorThrown);
+              }
+            });
+          }
+=======
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     </script>
 @endsection
 

@@ -66,6 +66,18 @@ if (!function_exists('admin')) {
         return auth()->guard('admin');
     }
 }
+
+if (!function_exists('getRole')) {
+    function getRole()
+    {
+        $admin = admin()->user();
+        if ($admin) {
+            return $admin->role;
+        }
+        return null;
+    }
+}
+
 if (!function_exists('setting')) {
     function setting(){
         return \App\Models\Setting::first();

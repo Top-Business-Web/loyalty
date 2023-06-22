@@ -3,7 +3,11 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
         'reference' => 'bfd1f301621042b4796473c4a96b9acd60fd598e',
+=======
+        'reference' => 'ed110e2c1b71c64d3ceb010c3a84d9cc380c9640',
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -568,7 +572,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => 'bfd1f301621042b4796473c4a96b9acd60fd598e',
+=======
+            'reference' => 'ed110e2c1b71c64d3ceb010c3a84d9cc380c9640',
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -701,9 +709,15 @@
             'dev_requirement' => false,
         ),
         'maennchen/zipstream-php' => array(
+<<<<<<< HEAD
             'pretty_version' => '3.1.0',
             'version' => '3.1.0.0',
             'reference' => 'b8174494eda667f7d13876b4a7bfef0f62a7c0d1',
+=======
+            'pretty_version' => '3.0.2',
+            'version' => '3.0.2.0',
+            'reference' => 'b46726e666b5d2ad32959ae9492ee1034e798162',
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
             'type' => 'library',
             'install_path' => __DIR__ . '/../maennchen/zipstream-php',
             'aliases' => array(),

@@ -177,13 +177,13 @@
                                 <h4 class="Ar">وقت و تاريخ اصدار الفاتورة  : {{$order->created_at}}</h4>
                             </div>
                             <div class="info2 ">
-                                <h4 class="Ar"> عنوان الشركة :{{$order->provider->town->title_ar??''}} </h4>
+                                <h4 class="Ar"> عنوان الشركة : السعوديه </h4>
                             </div>
                             <div class=" info2">
-                                <h4 class="Ar">  اسم الشركة :{{$order->provider->name??''}}</h4>
+                                <h4 class="Ar">  اسم الشركة : شركة أوشن العربية التجارية</h4>
                             </div>
                             <div class=" info2">
-                                <h4 class="Ar">   الرقم الضريبي :{{$order->provider->vat_number??''}}</h4>
+                                <h4 class="Ar">   الرقم الضريبي : ١٠١٠٦٩٩١٦٠</h4>
                             </div>
                             <!-- الرقم الضريبي للمشتري  -->
                             <div class=" info2 buy">

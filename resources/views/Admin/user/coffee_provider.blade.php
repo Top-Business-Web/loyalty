@@ -32,8 +32,8 @@
                                 <th>اسم المزود</th>
                                 <th>الايميل</th>
                                 <th>الرصيد</th>
+                                <th>رقم هاتف مقدم الخدمه</th>
                                 <th>التقيم</th>
-                                <th>في الخدمة</th>
                                 <th class="rounded-end">العمليات</th>
                             </tr>
                             </thead>
@@ -102,11 +102,8 @@
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'balance', name: 'balance'},
+            {data: 'phone', name: 'phone'},
             {data: 'rate', name: 'rate'},
-            {
-                data: 'in_service',
-                name: 'in_service'
-            },
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
         showData('{{route('coffeeProvider')}}', columns);
@@ -120,6 +117,7 @@
         // Edit Using Ajax
         showEditModal('{{route('users.edit',':id')}}');
         editScript();
+<<<<<<< HEAD
 
         function updateRequestStatus(selectElement, id) {
             var selectedValue = $(selectElement).val();
@@ -148,6 +146,8 @@
               }
             });
           }
+=======
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     </script>
 @endsection
 

@@ -7210,7 +7210,6 @@ return array(
     'Ramsey\\Collection\\Queue' => $vendorDir . '/ramsey/collection/src/Queue.php',
     'Ramsey\\Collection\\QueueInterface' => $vendorDir . '/ramsey/collection/src/QueueInterface.php',
     'Ramsey\\Collection\\Set' => $vendorDir . '/ramsey/collection/src/Set.php',
-    'Ramsey\\Collection\\Sort' => $vendorDir . '/ramsey/collection/src/Sort.php',
     'Ramsey\\Collection\\Tool\\TypeTrait' => $vendorDir . '/ramsey/collection/src/Tool/TypeTrait.php',
     'Ramsey\\Collection\\Tool\\ValueExtractorTrait' => $vendorDir . '/ramsey/collection/src/Tool/ValueExtractorTrait.php',
     'Ramsey\\Collection\\Tool\\ValueToStringTrait' => $vendorDir . '/ramsey/collection/src/Tool/ValueToStringTrait.php',
@@ -7712,6 +7711,7 @@ return array(
     'SebastianBergmann\\Type\\UnknownType' => $vendorDir . '/sebastian/type/src/type/UnknownType.php',
     'SebastianBergmann\\Type\\VoidType' => $vendorDir . '/sebastian/type/src/type/VoidType.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+<<<<<<< HEAD
     'Spatie\\Permission\\Commands\\CacheReset' => $vendorDir . '/spatie/laravel-permission/src/Commands/CacheReset.php',
     'Spatie\\Permission\\Commands\\CreatePermission' => $vendorDir . '/spatie/laravel-permission/src/Commands/CreatePermission.php',
     'Spatie\\Permission\\Commands\\CreateRole' => $vendorDir . '/spatie/laravel-permission/src/Commands/CreateRole.php',
@@ -7741,6 +7741,8 @@ return array(
     'Spatie\\Permission\\Traits\\HasRoles' => $vendorDir . '/spatie/laravel-permission/src/Traits/HasRoles.php',
     'Spatie\\Permission\\Traits\\RefreshesPermissionCache' => $vendorDir . '/spatie/laravel-permission/src/Traits/RefreshesPermissionCache.php',
     'Spatie\\Permission\\WildcardPermission' => $vendorDir . '/spatie/laravel-permission/src/WildcardPermission.php',
+=======
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Symfony\\Bridge\\PsrHttpMessage\\ArgumentValueResolver\\PsrServerRequestResolver' => $vendorDir . '/symfony/psr-http-message-bridge/ArgumentValueResolver/PsrServerRequestResolver.php',
     'Symfony\\Bridge\\PsrHttpMessage\\EventListener\\PsrResponseListener' => $vendorDir . '/symfony/psr-http-message-bridge/EventListener/PsrResponseListener.php',
@@ -8754,26 +8756,39 @@ return array(
     'Yoeunes\\Toastr\\Toastr' => $vendorDir . '/yoeunes/toastr/src/Toastr.php',
     'Yoeunes\\Toastr\\ToastrServiceProvider' => $vendorDir . '/yoeunes/toastr/src/ToastrServiceProvider.php',
     'ZipStream\\CentralDirectoryFileHeader' => $vendorDir . '/maennchen/zipstream-php/src/CentralDirectoryFileHeader.php',
+<<<<<<< HEAD
     'ZipStream\\CompressionMethod' => $vendorDir . '/maennchen/zipstream-php/src/CompressionMethod.php',
+=======
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     'ZipStream\\DataDescriptor' => $vendorDir . '/maennchen/zipstream-php/src/DataDescriptor.php',
     'ZipStream\\EndOfCentralDirectory' => $vendorDir . '/maennchen/zipstream-php/src/EndOfCentralDirectory.php',
     'ZipStream\\Exception' => $vendorDir . '/maennchen/zipstream-php/src/Exception.php',
     'ZipStream\\Exception\\DosTimeOverflowException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/DosTimeOverflowException.php',
     'ZipStream\\Exception\\FileNotFoundException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/FileNotFoundException.php',
     'ZipStream\\Exception\\FileNotReadableException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/FileNotReadableException.php',
+<<<<<<< HEAD
     'ZipStream\\Exception\\FileSizeIncorrectException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/FileSizeIncorrectException.php',
     'ZipStream\\Exception\\OverflowException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/OverflowException.php',
     'ZipStream\\Exception\\ResourceActionException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/ResourceActionException.php',
     'ZipStream\\Exception\\SimulationFileUnknownException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/SimulationFileUnknownException.php',
+=======
+    'ZipStream\\Exception\\OverflowException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/OverflowException.php',
+    'ZipStream\\Exception\\ResourceActionException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/ResourceActionException.php',
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     'ZipStream\\Exception\\StreamNotReadableException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/StreamNotReadableException.php',
     'ZipStream\\Exception\\StreamNotSeekableException' => $vendorDir . '/maennchen/zipstream-php/src/Exception/StreamNotSeekableException.php',
     'ZipStream\\File' => $vendorDir . '/maennchen/zipstream-php/src/File.php',
     'ZipStream\\GeneralPurposeBitFlag' => $vendorDir . '/maennchen/zipstream-php/src/GeneralPurposeBitFlag.php',
     'ZipStream\\LocalFileHeader' => $vendorDir . '/maennchen/zipstream-php/src/LocalFileHeader.php',
+<<<<<<< HEAD
     'ZipStream\\OperationMode' => $vendorDir . '/maennchen/zipstream-php/src/OperationMode.php',
     'ZipStream\\PackField' => $vendorDir . '/maennchen/zipstream-php/src/PackField.php',
     'ZipStream\\Time' => $vendorDir . '/maennchen/zipstream-php/src/Time.php',
     'ZipStream\\Version' => $vendorDir . '/maennchen/zipstream-php/src/Version.php',
+=======
+    'ZipStream\\PackField' => $vendorDir . '/maennchen/zipstream-php/src/PackField.php',
+    'ZipStream\\Time' => $vendorDir . '/maennchen/zipstream-php/src/Time.php',
+>>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     'ZipStream\\Zip64\\DataDescriptor' => $vendorDir . '/maennchen/zipstream-php/src/Zip64/DataDescriptor.php',
     'ZipStream\\Zip64\\EndOfCentralDirectory' => $vendorDir . '/maennchen/zipstream-php/src/Zip64/EndOfCentralDirectory.php',
     'ZipStream\\Zip64\\EndOfCentralDirectoryLocator' => $vendorDir . '/maennchen/zipstream-php/src/Zip64/EndOfCentralDirectoryLocator.php',

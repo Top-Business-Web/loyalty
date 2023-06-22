@@ -27,16 +27,18 @@
                         <!--begin::Table-->
                         <table class="table table-striped table-bordered w-100" id="dataTable">
                             <thead>
-                                <tr class="fw-bolder text-muted bg-light">
-                                    <th>#</th>
-                                    <th>الصورة</th>
-                                    <th>اسم المزود</th>
-                                    <th>الايميل</th>
-                                    <th>الرصيد</th>
-                                    <th>التقيم</th>
-                                    <th>في الخدمة</th>
-                                    <th class="rounded-end">العمليات</th>
-                                </tr>
+                            <tr class="fw-bolder text-muted bg-light">
+                                <th>#</th>
+                                <th>الصورة</th>
+                                <th>اسم المزود</th>
+                                <th>الايميل</th>
+                                <th>الرصيد</th>
+                                <th>رقم هاتف مقدم الخدمه</th>
+                                <th>التقيم</th>
+                                <th class="rounded-end">العمليات</th>
+                            </tr>
+
+
                             </thead>
                         </table>
                     </div>
@@ -94,46 +96,24 @@
 
     </div>
     @include('Admin/layouts/myAjaxHelper')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 @endsection
 @section('ajaxCalls')
     <script>
-        var columns = [{
-                data: 'id',
-                name: 'id'
-            },
-            {
-                data: 'image',
-                name: 'image'
-            },
-            {
-                data: 'name',
-                name: 'name'
-            },
-            {
-                data: 'email',
-                name: 'email'
-            },
-            {
-                data: 'balance',
-                name: 'balance'
-            },
-            {
-                data: 'rate',
-                name: 'rate'
-            },
-            {
-                data: 'in_service',
-                name: 'in_service'
-            },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            },
-        ]
+
+        var columns = [
+            {data: 'id', name: 'id'},
+            {data: 'image', name: 'image'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'balance', name: 'balance'},
+            {data: 'phone', name: 'phone'},
+            {data: 'rate', name: 'rate'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+
+            ];
+
+
         showData('{{ route('restaurantProvider') }}', columns);
         // Delete Using Ajax
 

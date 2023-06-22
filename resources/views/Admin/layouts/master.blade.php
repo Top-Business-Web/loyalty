@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-
+  
 <head>
     @include('Admin/layouts/head')
 </head>

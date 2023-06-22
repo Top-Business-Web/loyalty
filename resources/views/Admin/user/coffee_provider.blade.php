@@ -5,7 +5,7 @@
 @section('page_name') مزود كافيهات @endsection
 @section('content')
 
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+   {{--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  --}}
     <style>
         .checked {
             color: orange;
@@ -117,9 +117,6 @@
         // Add Using Ajax
         showAddModal('{{route('users.create')}}');
         addScript();
-
-
-
         // Edit Using Ajax
         showEditModal('{{route('users.edit',':id')}}');
         editScript();
@@ -151,7 +148,6 @@
               }
             });
           }
-
     </script>
 @endsection
 

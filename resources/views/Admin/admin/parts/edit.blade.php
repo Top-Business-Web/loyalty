@@ -19,6 +19,14 @@
             <label for="password" class="form-control-label">كلمة المرور</label>
             <input type="password" class="form-control" name="password" id="password" placeholder="********">
         </div>
+        <div class="form-group">
+            <label for="password" class="form-control-label">الصلاحيات</label>
+            <select class="form-control" name="role">
+                <option value="super_admin" style="text-align: center" {{ $admin->role == 'super_admin' ? 'selected' : '' }}>المشرفون المتميزون</option>
+                <option value="admin" style="text-align: center" {{ $admin->role == 'admin' ? 'selected' : '' }}>المشرفون</option>
+                <option value="creator" style="text-align: center" {{ $admin->role == 'creator' ? 'selected' : '' }}>كاتب محتوى</option>
+            </select>
+        </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
             <button type="submit" class="btn btn-success" id="updateButton">تحديث</button>

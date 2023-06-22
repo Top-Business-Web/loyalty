@@ -18,6 +18,14 @@
         <label for="password" class="form-control-label">كلمة المرور</label>
         <input type="password" class="form-control" name="password" id="password">
     </div>
+    <div class="form-group">
+        <label for="password" class="form-control-label">الصلاحيات</label>
+        <select class="form-control" name="role">
+            <option value="super_admin" style="text-align: center">المشرفون المتميزون</option>
+            <option value="admin" style="text-align: center">المشرفون</option>
+            <option value="creator" style="text-align: center">كاتب محتوى</option>
+        </select>
+    </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
             <button type="submit" class="btn btn-primary" id="addButton">اضافة</button>

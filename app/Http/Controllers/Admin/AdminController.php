@@ -33,6 +33,20 @@ class AdminController extends Controller
                             </button>
                        ';
                 })
+                ->editColumn('role', function ($admins) {
+                    if($admins->role == 'super_admin')
+                    {
+                        return '<td>المشرفون المتميزون</td>';
+                    }
+                    elseif($admins->role == 'admin')
+                    {
+                        return '<td>المشرفون</td>';
+                    }
+                    elseif($admins->role == 'creator')
+                    {
+                        return '<td>كاتب محتوى</td>';
+                    }
+                })
                 ->editColumn('image', function ($admins) {
                     return '
                     <img alt="image" onclick="window.open(this.src)" class="avatar avatar-md rounded-circle" src="'.get_user_file($admins->image).'">

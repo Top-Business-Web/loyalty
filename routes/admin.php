@@ -21,6 +21,11 @@ Route::get('/change-language/{locale}', function ($locale) {
     return back();
 });
 
+Route::group(['prefix'=>'admin'],function (){
+    Route::get('login', [AuthController::class,'index'])->name('admin');
+    Route::POST('login', [AuthController::class,'login'])->name('admin.login');
+});
+
 Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     Route::get('/', function () {
         return view('Admin/index');

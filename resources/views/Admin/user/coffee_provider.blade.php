@@ -32,6 +32,7 @@
                                 <th>اسم المزود</th>
                                 <th>الايميل</th>
                                 <th>الرصيد</th>
+                                <th>رقم هاتف مقدم الخدمه</th>
                                 <th>التقيم</th>
                                 <th>في الخدمة</th>
                                 <th class="rounded-end">العمليات</th>
@@ -102,6 +103,7 @@
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'balance', name: 'balance'},
+            {data: 'phone', name: 'phone'},
             {data: 'rate', name: 'rate'},
             {
                 data: 'in_service',
@@ -118,9 +120,6 @@
         showAddModal('{{route('users.create')}}');
         addScript();
 
-
-
-        // Edit Using Ajax
         showEditModal('{{route('users.edit',':id')}}');
         editScript();
 

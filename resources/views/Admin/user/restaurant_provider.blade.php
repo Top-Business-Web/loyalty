@@ -27,6 +27,18 @@
                         <!--begin::Table-->
                         <table class="table table-striped table-bordered w-100" id="dataTable">
                             <thead>
+<<<<<<< HEAD
+                            <tr class="fw-bolder text-muted bg-light">
+                                <th>#</th>
+                                <th>الصورة</th>
+                                <th>اسم المزود</th>
+                                <th>الايميل</th>
+                                <th>الرصيد</th>
+                                <th>رقم هاتف مقدم الخدمه</th>
+                                <th>التقيم</th>
+                                <th class="rounded-end">العمليات</th>
+                            </tr>
+=======
                                 <tr class="fw-bolder text-muted bg-light">
                                     <th>#</th>
                                     <th>الصورة</th>
@@ -37,6 +49,7 @@
                                     <th>في الخدمة</th>
                                     <th class="rounded-end">العمليات</th>
                                 </tr>
+>>>>>>> bfd1f301621042b4796473c4a96b9acd60fd598e
                             </thead>
                         </table>
                     </div>
@@ -99,6 +112,17 @@
 @endsection
 @section('ajaxCalls')
     <script>
+<<<<<<< HEAD
+        var columns = [
+            {data: 'id', name: 'id'},
+            {data: 'image', name: 'image'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'balance', name: 'balance'},
+            {data: 'phone', name: 'phone'},
+            {data: 'rate', name: 'rate'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+=======
         var columns = [{
                 data: 'id',
                 name: 'id'
@@ -133,6 +157,7 @@
                 orderable: false,
                 searchable: false
             },
+>>>>>>> bfd1f301621042b4796473c4a96b9acd60fd598e
         ]
         showData('{{ route('restaurantProvider') }}', columns);
         // Delete Using Ajax

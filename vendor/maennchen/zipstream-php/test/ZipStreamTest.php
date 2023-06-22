@@ -9,16 +9,12 @@ use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\StreamWrapper;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
-<<<<<<< HEAD
 use Psr\Http\Message\StreamInterface;
-=======
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
 use RuntimeException;
 use ZipArchive;
 use ZipStream\CompressionMethod;
 use ZipStream\Exception\FileNotFoundException;
 use ZipStream\Exception\FileNotReadableException;
-<<<<<<< HEAD
 use ZipStream\Exception\FileSizeIncorrectException;
 use ZipStream\Exception\OverflowException;
 use ZipStream\Exception\ResourceActionException;
@@ -27,21 +23,12 @@ use ZipStream\Exception\StreamNotReadableException;
 use ZipStream\Exception\StreamNotSeekableException;
 use ZipStream\OperationMode;
 use ZipStream\PackField;
-=======
-use ZipStream\Exception\OverflowException;
-use ZipStream\Exception\ResourceActionException;
-use ZipStream\Exception\StreamNotReadableException;
-use ZipStream\Exception\StreamNotSeekableException;
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
 use ZipStream\ZipStream;
 
 class ZipStreamTest extends TestCase
 {
     use Util;
-<<<<<<< HEAD
     use Assertions;
-=======
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
 
     public function testAddFile(): void
     {
@@ -187,7 +174,6 @@ class ZipStreamTest extends TestCase
     public function testAddFileFromPathFileNotFoundException(): void
     {
         $this->expectException(FileNotFoundException::class);
-<<<<<<< HEAD
 
         [, $stream] = $this->getTmpFileStream();
 
@@ -196,10 +182,6 @@ class ZipStreamTest extends TestCase
             outputStream: $stream,
             sendHttpHeaders: false,
         );
-=======
-        // Get ZipStream Object
-        $zip = new ZipStream();
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
 
         // Trigger error by adding a file which doesn't exist
         $zip->addFileFromPath(fileName: 'foobar.php', path: '/foo/bar/foobar.php');
@@ -207,20 +189,16 @@ class ZipStreamTest extends TestCase
 
     public function testAddFileFromPathFileNotReadableException(): void
     {
-<<<<<<< HEAD
         $this->expectException(FileNotReadableException::class);
 
 
         [, $stream] = $this->getTmpFileStream();
 
 
-=======
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
         // create new virtual filesystem
         $root = vfsStream::setup('vfs');
         // create a virtual file with no permissions
         $file = vfsStream::newFile('foo.txt', 0)->at($root)->setContent('bar');
-<<<<<<< HEAD
 
         // Get ZipStream Object
         $zip = new ZipStream(
@@ -228,10 +206,6 @@ class ZipStreamTest extends TestCase
             sendHttpHeaders: false,
         );
 
-=======
-        $zip = new ZipStream();
-        $this->expectException(FileNotReadableException::class);
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
         $zip->addFileFromPath('foo.txt', $file->url());
     }
 
@@ -669,7 +643,6 @@ class ZipStreamTest extends TestCase
     /**
      * @group slow
      */
-<<<<<<< HEAD
     public function testAddsZip64HeaderWhenNeeded(): void
     {
         [$tmp, $stream] = $this->getTmpFileStream();
@@ -736,8 +709,6 @@ class ZipStreamTest extends TestCase
     /**
      * @group slow
      */
-=======
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     public function testAddLargeFileWithoutZip64WithoutZeroHeader(): void
     {
         $this->expectException(OverflowException::class);
@@ -926,7 +897,6 @@ class ZipStreamTest extends TestCase
         $this->assertDirectoryExists($tmpDir . DIRECTORY_SEPARATOR . 'foo');
     }
 
-<<<<<<< HEAD
     public function testAddFileSimulate(): void
     {
         [, $stream] = $this->getTmpFileStream();
@@ -1278,8 +1248,6 @@ class ZipStreamTest extends TestCase
         $zip->executeSimulation();
     }
 
-=======
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     private function addLargeFileFileFromPath(CompressionMethod $compressionMethod, $zeroHeader, $zip64): void
     {
         [$tmp, $stream] = $this->getTmpFileStream();

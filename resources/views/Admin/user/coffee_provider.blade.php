@@ -117,7 +117,6 @@
         // Edit Using Ajax
         showEditModal('{{route('users.edit',':id')}}');
         editScript();
-<<<<<<< HEAD
 
         function updateRequestStatus(selectElement, id) {
             var selectedValue = $(selectElement).val();
@@ -146,8 +145,6 @@
               }
             });
           }
-=======
->>>>>>> 3642be10699c60bb85d13646d6ee97a2cdff15a7
     </script>
 @endsection
 

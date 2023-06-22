@@ -26,6 +26,7 @@
                             <thead>
                             <tr class="fw-bolder text-muted bg-light">
                                 <th class="min-w-25px">#</th>
+                                <th class="min-w-50px">{{__('admin.provider')}}</th>
                                 <th class="min-w-50px">{{__('admin.image')}}</th>
                                 <th class="min-w-50px"> {{__('admin.name_ar')}}</th>
                                 <th class="min-w-125px">{{__('admin.name_en')}}</th>
@@ -90,6 +91,7 @@
     <script>
         var columns = [
             {data: 'id', name: 'id'},
+            {data: 'user_id', name: 'user_id'},
             {data: 'image', name: 'image'},
             {data: 'name_ar', name: 'name_ar'},
             {data: 'name_en', name: 'name_en'},

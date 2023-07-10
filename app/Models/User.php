@@ -49,6 +49,7 @@ class User extends Authenticatable implements JWTSubject
         return get_file($this->attributes['image']);
     }
 
+
     public function categories(){
         return $this->hasMany(Category::class,'user_id');
     }

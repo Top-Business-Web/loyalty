@@ -33,7 +33,7 @@ class HomeService
 
     public function packages(){
 
-        $data['packages'] = Package::select('id','price','title','description')->get();
+        $data['packages'] = Package::select('id','price','title', 'image','description')->get();
 
         return helperJson($data, '');
     }

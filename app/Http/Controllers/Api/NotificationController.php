@@ -47,6 +47,7 @@ class NotificationController extends Controller
         }
         $data = $request->validate($rules);
 
+        //add firebase
         $token = FirebaseToken::create($data);
 
         return helperJson(new NotificationResource($token), 'Firebase Token inserted successfully');

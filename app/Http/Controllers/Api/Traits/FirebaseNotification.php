@@ -17,10 +17,10 @@ trait FirebaseNotification{
 
         if($client_id != null){
             $userIds = User::query()->where('id','=',$client_id)->pluck('id')->toArray();
-            $tokens = FirebaseToken::query()->whereIn('client_id',$userIds)->pluck('token')->toArray();
+            $tokens = FirebaseToken::query()->whereIn('client_id',$userIds)->pluck('phone_token')->toArray();
         }else{
             $usersIds = User::query()->where('id','=',$provider_id)->pluck('id')->toArray();
-            $tokens = FirebaseToken::query()->whereIn('client_id',$usersIds)->pluck('token')->toArray();
+            $tokens = FirebaseToken::query()->whereIn('client_id',$usersIds)->pluck('phone_token')->toArray();
         }
 
         Notification::create([

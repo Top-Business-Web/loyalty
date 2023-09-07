@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\Provider\Auth\AuthController;
 use App\Http\Controllers\Api\Provider\Auth\CodeCheckController;
@@ -44,7 +45,7 @@ Route::group(['prefix' => 'provider/categories'],function (){
     Route::post('update/{id}', [CategoryController::class, 'update']);
     Route::post('delete/{id}', [CategoryController::class, 'destroy']);
 });
-
+//addFirebaseNotification
 Route::group(['prefix' => 'provider/products'],function (){
     Route::get('list/{category_id}', [ProductController::class, 'index']);
     Route::post('store', [ProductController::class, 'store']);
@@ -74,5 +75,7 @@ Route::group([ 'middleware' => 'api','namespace' => 'Api'], function () {
     Route::get('/search', [SearchController::class, 'index']);
 });
 
+
+Route::post('addFirebaseNotification', [NotificationController::class, 'insert_token']);
 
 

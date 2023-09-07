@@ -2,6 +2,7 @@
 
 namespace App\Services\Api;
 
+use App\Http\Controllers\Api\Traits\FirebaseNotification;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Order;
@@ -11,6 +12,7 @@ use App\Traits\GeneralTrait;
 class ClientOrderService
 {
     use GeneralTrait;
+    use FirebaseNotification;
     public function list(){
         $user = auth('user-api')->user();
         $data['new'] = OrderResource::collection(Order::where('user_id', $user->id)->where('status' ,'new')->get());
@@ -49,6 +51,8 @@ class ClientOrderService
             $data['note'] = $inputs['note'];
         }
         $order = Order::create($data);
+
+        $this->sendFirebaseNotification(['title' => 'طلب جديد لديك','body' => 'تم اضافه طلب جديد لديك','order_id' =>  $order->id,'provider_name' => $order->provider->name],null,$order->provider_id);
 
         $order->details()->createMany($inputs['order_details']);
         return helperJson(new OrderResource($order), 'تمت الاضافة بنجاح');

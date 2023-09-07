@@ -2,6 +2,8 @@
 
 namespace App\Services\Api;
 
+use App\Http\Controllers\Api\Traits\FirebaseNotification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Order;
@@ -11,6 +13,8 @@ use App\Traits\GeneralTrait;
 class OrderService
 {
     use GeneralTrait;
+    use FirebaseNotification;
+
     public function list(){
         $provider = auth()->user();
 //        dd($provider);
@@ -52,6 +56,8 @@ class OrderService
         $order = Order::create($data);
 
         $order->details()->createMany($inputs['order_details']);
+
+        $this->sendFirebaseNotification(['title' => 'طلب جديد لديك','body' => 'تم اضافه طلب جديد لديك','order_id' =>  $order->id,'client_name' => $order->user->name],$order->user_id,null);
         return helperJson(new OrderResource($order), 'تمت الاضافة بنجاح');
     }
 
@@ -96,6 +102,9 @@ class OrderService
         $provider->save();
         $order->status = 'accepted';
         $order->save();
+
+        $this->sendFirebaseNotification(['title' => 'طلب جديد لديك','body' => 'تم اكتمال طلبك من قبل المورد','order_id' =>  $order->id,'client_name' => $order->user->name],$order->user_id,null);
+
         return helperJson($order, 'تم عملية الدفع بنجاح');
     }
 
@@ -123,6 +132,8 @@ class OrderService
 
         $order->status = 'rejected';
         $order->save();
+        $this->sendFirebaseNotification(['title' => 'طلب جديد لديك','body' => 'تم رفض طلبك من قبل المورد','order_id' =>  $order->id,'client_name' => $order->user->name],$order->user_id,null);
+
         return helperJson($order, 'تم الغاء الطلب');
     }
 

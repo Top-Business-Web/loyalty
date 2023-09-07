@@ -28,7 +28,8 @@
         "tailflow/laravel-orion": "^2.19",
         "tymon/jwt-auth": "^1.0",
         "yajra/laravel-datatables": "^1.5",
-        "yoeunes/toastr": "^1.2"
+        "yoeunes/toastr": "^1.2",
+      "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

@@ -54,6 +54,8 @@ Route::group(['prefix' => 'client/orders'],function (){
 
 });
 
+
+
 Route::group(['prefix' => 'client'],function (){
 
     Route::post('add-rate', [HomeController::class, 'add_rate']);

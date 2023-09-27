@@ -38,8 +38,7 @@ trait FirebaseNotification{
             "notification" => [
                 "title" => $data['title'],
                 "body" => $data['body'],
-                "order_id" => $data['order_id'],
-                "client_name" => $data['client_name'],
+
             ]
         );
         $fields = json_encode($fields);

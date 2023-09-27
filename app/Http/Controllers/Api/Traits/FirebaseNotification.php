@@ -18,6 +18,7 @@ trait FirebaseNotification{
         if($client_id != null){
             $userIds = User::query()->where('id','=',$client_id)->pluck('id')->toArray();
             $tokens = FirebaseToken::query()->whereIn('client_id',$userIds)->pluck('phone_token')->toArray();
+
         }else{
             $usersIds = User::query()->where('id','=',$provider_id)->pluck('id')->toArray();
             $tokens = FirebaseToken::query()->whereIn('client_id',$usersIds)->pluck('phone_token')->toArray();
@@ -30,9 +31,16 @@ trait FirebaseNotification{
             'provider_id' => $provider_id ?? null,
         ]);
 
+
         $fields = array(
             'registration_ids' => $tokens,
             'data' => $data,
+            "notification" => [
+                "title" => $data['title'],
+                "body" => $data['body'],
+                "order_id" => $data['order_id'],
+                "client_name" => $data['client_name'],
+            ]
         );
         $fields = json_encode($fields);
 
